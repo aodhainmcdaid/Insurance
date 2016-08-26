@@ -20,7 +20,7 @@ public class display {
 			System.out.println("Enter Year" +"- yyyy - ");
 			y3 = checkRange(1000, 9999);
 			if(validDate(d3,m3,y3)== false){
-				System.out.println("\t\t\tInvalid Date.");
+				System.out.println("Invalid Date.");
 				flag1=false;
 			}
 		}while(flag1 == false);

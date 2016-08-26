@@ -13,7 +13,7 @@ public class ConectionDB {
 		ResultSet rs = null;
 		try {
 //			new com.mysql.jdbc.Driver();
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			Class.forName("com.mysql.jdbc.Driver ").newInstance();
 // conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/insurance_schema,user=root&password=francesca12");
 			String connectionUrl = "jdbc:mysql://localhost:3306/insurance_schema";
 			String connectionUser = "root";
