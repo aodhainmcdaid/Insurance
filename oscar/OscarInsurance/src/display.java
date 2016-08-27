@@ -13,7 +13,7 @@ public class display {
 			flag1= true;
 			System.out.println("Enter Your Date Of Birth - dd/mm/yyyy");
 
-			System.out.println("Enter Day" + "- dd - ");
+			System.out.println("Enter Day" + " dd - ");
 			d3 = checkRange(1, 31);
 			System.out.println("Enter month" +"- mm - ");
 			m3 = checkRange(1, 12);
