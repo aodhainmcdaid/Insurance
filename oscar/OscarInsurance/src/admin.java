@@ -1,4 +1,4 @@
 
-public class admin {
+public class admin extends user {
 
 }
