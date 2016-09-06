@@ -1,14 +1,19 @@
 package lyit.oscar.insurance;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 public class User {
        //Variables 
        private String screenName;
        private String firstName;
        private String lastName;
-       private int age;
+       private LocalDate birthday;
        private Boolean adminPriv;
        private int policyNum;
-       private String password; //Note this needs to be fixed so that it is more secure.
+       private int password;
+       private int policyPrice;
+       private int policyPay;
        
        /**
         * This class contains important user information
@@ -20,11 +25,11 @@ public class User {
         * @param pass	The user's chosen password
         * @param ad		The user's administration privilege - should always be false unless creating a new user from the Admin Class
         */
-       User(String sn, String first, String last, int anAge, String pass, Boolean ad){
+       public User(String sn, String first, String last, LocalDate bday, int pass, Boolean ad){
     	   this.screenName = sn;
     	   this.firstName = first;
     	   this.lastName = last;
-    	   this.age = anAge;
+    	   this.birthday = bday;
     	   this.adminPriv = false;
     	   this.policyNum = 0;
     	   this.password = pass;
@@ -37,8 +42,8 @@ public class User {
         * @param aPass	The password the user entered to access their account
         * @return		If the password the user supplied matches the password that they set
         */
-       public boolean logIn(String aPass){
-    	   return this.password.equals(aPass);
+       public boolean logIn(int aPass){
+    	   return this.password == aPass;
        }
        
        /**
@@ -48,6 +53,33 @@ public class User {
         */
        public void setPolicyNum(int num){
     	   this.policyNum = num;
+       }
+       
+       /**
+        * Allows the program to set the price of the policy, and store it with the user.
+        * 
+        * @param num	The price per payment term of the policy
+        * @param months	The number of months between payments. i.e. paying once a year would be 12, paying once a month would be 1
+        */
+       public void setPolicyPrice(int num, int months){
+    	   this.policyPrice = num;
+    	   this.policyPay = months;
+       }
+       
+       /**
+        * 
+        * @return
+        */
+       public int getPolicyPrice(){
+    	   return this.policyPrice;
+       }
+       
+       /**
+        * 
+        * @return
+        */
+       public int getPolicyPau(){
+    	   return this.policyPay;
        }
        
        /**
@@ -92,7 +124,9 @@ public class User {
         * @return 	The user's age
         */
        public int getAge(){
-    	   return this.age;
+    	   LocalDate today = LocalDate.now();
+    	   int age = Period.between(birthday, today).getYears();
+    	   return age;
        }
        
        /**
