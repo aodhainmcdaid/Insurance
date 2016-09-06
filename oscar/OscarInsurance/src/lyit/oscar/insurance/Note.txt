@@ -1,0 +1,4 @@
+Hey guys, I just wanted to leave a note saying I had to add the files manually or it gave me a submission error. The tests need to be moved back into their own package, but I can do that later tonight if I can get Eclipse to cooperate with me or tomorrow. 
+Thanks :D
+
+P.S. This file will be deleted before submission.
