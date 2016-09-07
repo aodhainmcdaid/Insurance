@@ -9,8 +9,11 @@ public class Run {
 	private Admin anAdmin;
 
 	public int run() {
-		//TODO: Start the Database
-		//TODO: Initialize lists 
+		System.out.println("Starting Connection to DB");
+		ConectionDB connection = new ConectionDB();
+		System.out.println("Created Connection \n");
+
+		//Prompt user
 		int hold = getNumResponse("Please select an option: \n\t1: Log In \n\t2: Create New User", 1, 2);
 		System.out.println("Response = " + hold);
 		if(hold == 1){
@@ -22,7 +25,7 @@ public class Run {
 		if(aUser.getAdmin()){
 			adminRun();
 		}else{
-			
+			userRun();
 		}
 		
 		return 1;
