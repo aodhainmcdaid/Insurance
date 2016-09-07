@@ -27,7 +27,7 @@ public class UserTest {
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		LocalDate bday = LocalDate.of(1992, 4, 17);
-		aUser = new User("SolarLunix", "Melissa", "Melaugh", bday, "FakePass123".hashCode(), false);
+		aUser = new User("SolarLunix", "Melissa", "Melaugh", bday, "FakePass123".hashCode(), false, "female");
 	}
 
 	/**
