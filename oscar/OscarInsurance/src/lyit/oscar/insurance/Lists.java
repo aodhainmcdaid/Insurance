@@ -19,4 +19,8 @@ public class Lists {
 		}
 	}
 	
+	static public void addUser(User aUser){
+		//TODO: Design method to add user to list
+	}
+	
 }

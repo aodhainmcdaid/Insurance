@@ -1,5 +1,7 @@
 package lyit.oscar.insurance;
 
+import java.time.LocalDate;
+
 public class Admin extends User {
 	/**
 	 * TODO: Generate Admin Methods
@@ -15,9 +17,20 @@ public class Admin extends User {
      * @param pass	The user's chosen password
      * @param ad	The user's administration privilege - should always be false unless creating a new user from the Admin Class
      */
-	Admin(String sn, String first, String last, int anAge, String pass) {
-		super(sn, first, last, anAge, pass, true);
+	Admin(String sn, String first, String last, LocalDate bDay, int pass) {
+		super(sn, first, last, bDay, pass, true);
 		
+	}
+	
+	public void upgradeToAdmin(User user){
+		//TODO: Get all the information from the user, delete the user from the main list, re-add the user only as an Admin Object.
+		
+	}
+	
+	public void searchUsers(){
+		//TODO: Allows an admin to search the entire list of users.
+		//Note: the search below is only an example, although users can be searched for by full name, first name, last name or screen name
+		String search = Run.getStrResponse("Enter the full name of the user you are looking for");
 	}
 
 }
