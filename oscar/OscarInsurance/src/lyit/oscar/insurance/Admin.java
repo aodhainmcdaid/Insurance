@@ -17,8 +17,8 @@ public class Admin extends User {
      * @param pass	The user's chosen password
      * @param ad	The user's administration privilege - should always be false unless creating a new user from the Admin Class
      */
-	Admin(String sn, String first, String last, LocalDate bDay, int pass) {
-		super(sn, first, last, bDay, pass, true);
+	Admin(String sn, String first, String last, LocalDate bDay, int pass, String gender) {
+		super(sn, first, last, bDay, pass, true, gender);
 		
 	}
 	

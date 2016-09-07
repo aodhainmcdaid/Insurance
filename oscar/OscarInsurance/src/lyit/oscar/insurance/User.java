@@ -14,6 +14,7 @@ public class User {
        private int password;
        private int policyPrice;
        private int policyPay;
+       private String gender;
        
        /**
         * This class contains important user information
@@ -25,7 +26,7 @@ public class User {
         * @param pass	The user's chosen password
         * @param ad		The user's administration privilege - should always be false unless creating a new user from the Admin Class
         */
-       public User(String sn, String first, String last, LocalDate bday, int pass, Boolean ad){
+       public User(String sn, String first, String last, LocalDate bday, int pass, Boolean ad, String gender){
     	   this.screenName = sn;
     	   this.firstName = first;
     	   this.lastName = last;
@@ -34,6 +35,7 @@ public class User {
     	   this.policyNum = 0;
     	   this.password = pass;
     	   this.adminPriv = ad;
+    	   this.gender = gender;
        }
        
        /**
@@ -78,8 +80,16 @@ public class User {
         * 
         * @return
         */
-       public int getPolicyPau(){
+       public int getPolicyPay(){
     	   return this.policyPay;
+       }
+       
+       /**
+        * 
+        * @return
+        */
+       public String getGender(){
+    	   return this.gender;
        }
        
        /**
