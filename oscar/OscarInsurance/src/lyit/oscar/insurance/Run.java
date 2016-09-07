@@ -131,8 +131,16 @@ public class Run {
 		String password = getStrResponse("Please enter a password then hit enter: ");
 		int hashedPassword = password.hashCode();
 		
+		int gender = getNumResponse("Please chose you gender: \n\t1: Male \n\t2:Female", 1, 2);
+		String a_gender = "";
+		if(gender == 1){
+			a_gender = "Male";
+		}else{
+			a_gender = "Female";
+		}
+		
 		//Create the user based on the given information
-		User aNewUser = new User(sn, first, last, birthday, hashedPassword, false);
+		User aNewUser = new User(sn, first, last, birthday, hashedPassword, false, a_gender);
 		Lists.addUser(aNewUser);
 		return aNewUser;
 	}
