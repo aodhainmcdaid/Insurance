@@ -10,7 +10,8 @@ public class Run {
 
 	public int run() {
 		System.out.println("Starting Connection to DB");
-		ConectionDB connection = new ConectionDB();
+		ConectionDBTrue conn = new ConectionDBTrue();
+		conn.startDB();
 		System.out.println("Created Connection \n");
 
 		//Prompt user
