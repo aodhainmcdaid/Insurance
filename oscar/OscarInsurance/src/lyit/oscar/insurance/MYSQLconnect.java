@@ -6,7 +6,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
- 
+/**
+ * @author Daniela
+ */
 public class MYSQLconnect {
     //static reference to itself
     private static  MYSQLconnect instance = new  MYSQLconnect();
@@ -15,7 +17,9 @@ public class MYSQLconnect {
     public static final String PASSWORD ="francesca12";
     public static final String DRIVER_CLASS = "com.mysql.jdbc.Driver"; 
      
-    //private constructor
+    /**
+     * Private constructor
+     */
     MYSQLconnect() {
         try {
             //Step 2: Load MySQL Java driver
@@ -25,6 +29,10 @@ public class MYSQLconnect {
         }
     }
      
+     /**
+      * This method creates the connection if possible and prints out an error if it isn't possible. 
+      * @return  The current connection - null if unable to connect.
+      */
     private Connection createConnection() {
  
         Connection connection = null;
@@ -39,6 +47,10 @@ public class MYSQLconnect {
         return connection;
     }   
      
+    /**
+     * This method gets the current connection
+     * @return The current connection created by the create connection method
+     */
     public static Connection getConnection() {
         return instance.createConnection();
     }
