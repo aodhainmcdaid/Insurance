@@ -2,12 +2,15 @@ package lyit.oscar.insurance;
 //imports
 import java.util.Random;
 
+/**
+ * @author Melissa Melaugh
+ */
 public class Pricing {
 	//Variables
 	private User currentUser;
 	
 	/**
-	 * 
+	 * The constructor for the pricing class
 	 * @param aUser	this is the current user
 	 */
 	Pricing(User aUser){
@@ -15,13 +18,23 @@ public class Pricing {
 		generatePrice();
 	}
 	
+	/**
+	 * This method looks at the current user and generates a price based on their data.
+	 * If they wish to purchase, it generates a policy number and updates the User's information.
+	 */
 	private void generatePrice(){
 		//TODO Generate a price for the user, and then ask them if they want to purchase 
+		//TODO: When purchasing, ask how often they would like to pay
 		
 		//If the user accepts, generate policy number
 		generatePolicyNum();
+		//Update Pricing on the User's profile
 	}
 	
+	/**
+	 * This method generates a unique policy number for the user between 100000000 and 999999999. 
+	 * It updates the user's profile with their unique policy number.
+	 */
 	private void generatePolicyNum(){
 		int polNum = 0;
 		
