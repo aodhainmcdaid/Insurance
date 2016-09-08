@@ -19,6 +19,10 @@ public class Lists {
 		}
 	}
 	
+	/**
+	 * Adds a new user to the Data Base and the List
+	 * @param aUser	This is the user that is to be added to the list
+	 */
 	static public void addUser(User aUser){
 		//TODO: Design method to add user to list
 	}
