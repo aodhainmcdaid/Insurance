@@ -5,14 +5,23 @@ import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.Scanner;
 
+/**
+ * @author Melissa and Daniela
+ */
 public class Run {
 	private User aUser;
 	private Admin anAdmin;
 
+	/**
+	 * This method runs the main program. It first starts the data base and then it prompts the user.
+	 * It runs based off the user choice
+	 * 
+	 * @return Returns 1 for testing purposes to show that it ran properly
+	 */
 	public int run() {
 	    Connection conn = null;
 		System.out.println("Starting Connection to DB");
-		conn =MYSQLconnect.getConnection();
+		conn = MYSQLconnect.getConnection();
 		
 		System.out.println("Created Connection \n");
 
@@ -34,6 +43,9 @@ public class Run {
 		return 1;
 	}
 	
+	/**
+	 * This method will log the user on
+	 */
 	public void logon(){
 		//TODO: Get the user to enter their screen name, search the list for that screen name, produce an error if no screen name exists
 		//TODO: After the user is seen to exist, ask them for the password, turn it to a hash and use the logon for the user
@@ -41,10 +53,18 @@ public class Run {
 		//TODO: Make sure to check if the User is an Admin object or a User object so that the admins will have access to their admin privileges
 	}
 	
+	/**
+	 * This method allows the user to do limited things with their account - either purchase a policy if there isn't 
+	 * a policy already purchased, or view the policy that they have.
+	 */
 	public void userRun(){
 		//TODO: Generate what the User can do once logged in
 	}
 	
+	/**
+	 * This method allows the admin to do what they would like, such as update user information, change users from normal
+	 * users to admins, as well as view and search the entire list of users in the database.
+	 */
 	public void adminRun(){
 		//TODO: Generate what the Admin can do once logged in
 	}
@@ -83,6 +103,11 @@ public class Run {
 		return response;
 	}
 
+	/**
+	 * Gets a user response from the given instructions
+	 * @param aString	The instructions for what is wanted
+	 * @return 		The correct response from the user
+	 */
 	static public String getStrResponse(String aString){
 		String response = "";
 		Scanner input = new Scanner(System.in);
@@ -99,6 +124,10 @@ public class Run {
 		return response;
 	}
 	
+	/**
+	 * Creates a new user based on information that the user provides, and then updates the current user to the newly
+	 * created one from this method.
+	 */
 	public User createUser(){
 		//Create the screen name, and user's full name
 		String sn = getStrResponse("Please input your screenname then hit enter: ");
@@ -152,7 +181,9 @@ public class Run {
 	}
 	
 	
-	
+	/**
+	 * This method is to shut down the program - Closing connections to the Database will be done here.
+	 */
 	public void shutdown() {
 		// TODO Auto-generated method stub
 		//needs to close down the database connection
