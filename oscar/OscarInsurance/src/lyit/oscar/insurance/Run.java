@@ -1,6 +1,7 @@
 package lyit.oscar.insurance;
 
 import java.util.InputMismatchException;
+import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -9,9 +10,10 @@ public class Run {
 	private Admin anAdmin;
 
 	public int run() {
+	    Connection conn = null;
 		System.out.println("Starting Connection to DB");
-		ConectionDBTrue conn = new ConectionDBTrue();
-		conn.startDB();
+		conn =MYSQLconnect.getConnection();
+		
 		System.out.println("Created Connection \n");
 
 		//Prompt user
@@ -23,7 +25,7 @@ public class Run {
 			aUser = createUser();
 		}
 		
-		if(aUser.getAdmin()){
+		if(aUser.getAdmin()){ 
 			adminRun();
 		}else{
 			userRun();
@@ -93,7 +95,7 @@ public class Run {
 				break;
 			}
 		}
-		input.close();
+		//input.close();
 		return response;
 	}
 	

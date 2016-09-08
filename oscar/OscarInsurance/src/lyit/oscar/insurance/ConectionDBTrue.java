@@ -30,7 +30,8 @@ public class ConectionDBTrue {
 				System.out.println("idPerson: " + id+ ", First Name: " + firstName
 						+ ", Last Name: " + lastName);
 			}
-		} catch (Exception e) {
+		}
+	catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			try { if (rs != null) rs.close(); } catch (SQLException e) { e.printStackTrace(); }
