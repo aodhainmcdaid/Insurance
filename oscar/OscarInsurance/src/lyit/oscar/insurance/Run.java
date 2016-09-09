@@ -1,6 +1,7 @@
 package lyit.oscar.insurance;
 
 import java.util.InputMismatchException;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -17,7 +18,7 @@ import java.util.*;
 
 public class Run {
 	
-	Scanner sc = new Scanner(System.in);
+	//Scanner sc = new Scanner(System.in);
 	
 	
 	private User aUser;
@@ -42,7 +43,7 @@ public class Run {
 		int hold = getNumResponse("Please select an option: \n\t1: Log In \n\t2: Create New User", 1, 2);
 		System.out.println("Response = " + hold);
 		if(hold == 1){
-			
+			logon();
 		}else if(hold == 2){
 			aUser = createUser();
 		}
@@ -84,23 +85,20 @@ public class Run {
 		Scanner keyIn = new Scanner(System.in);
 		//Temporary login- will be modified later
 		
-		System.out.println("Enter Username");
-		String uname=keyIn.next();
-		
-		
-		System.out.println("Enter Password");
-		String pass= keyIn.next();
-		
+		String uname="aaa";
+		String pass="aaa";
 		
 			
-		if(uname.equalsIgnoreCase("u")&&pass.equalsIgnoreCase("u"))
+		if(uname.equalsIgnoreCase("aaa")&&pass.equalsIgnoreCase("aaa"))
 		{	
 			displayClientMenu();
+			
 		}
 		
 		else{
 			System.out.print("wrong username");
 		}
+		keyIn.close();
 			
 >>>>>>> branch 'master' of https://github.com/aodhainmcdaid/Insurance.git
 	}
@@ -297,7 +295,7 @@ public class Run {
 	    System.out.println("2.\tView Policy");
 	    System.out.println("3.\tCancel Policy");
 	    System.out.println("0.\tExit\n\n");   
-	    
+	  
 	    System.out.print("Select Option: ");
 	    int userIn= sc.nextInt();
 	    
