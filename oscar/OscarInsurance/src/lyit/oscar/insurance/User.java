@@ -37,6 +37,12 @@ public class User {
     	   this.adminPriv = ad;
     	   this.gender = gender;
        }
+       public User(String firstNameIn, String lastNameIn)
+       {
+    	   firstName = firstNameIn;
+    	   lastName = lastNameIn;
+       }
+       
        
        /**
         * Checks if the password is correct when the user attempts to log in to their account.
@@ -156,5 +162,18 @@ public class User {
        public int getPolicyNum(){
     	   return this.policyNum;
        }
+       
+       /**
+        *
+        * 
+        * @return	true if user details equals anotherUser
+        */
+       public boolean equals(User anotherUser)
+  		{
+  			return( screenName == anotherUser.screenName
+  				&&  firstName == anotherUser.firstName
+  				&&  lastName == anotherUser.lastName);
+  		}
+
 
 }

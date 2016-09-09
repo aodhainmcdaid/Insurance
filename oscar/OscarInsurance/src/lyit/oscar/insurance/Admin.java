@@ -1,36 +1,48 @@
 package lyit.oscar.insurance;
 
-import java.time.LocalDate;
+//import java.time.LocalDate;
 
 public class Admin extends User {
-	/**
-	 * TODO: Generate Admin Methods
-	 */
 	
-	/**
-     * This class contains important user information
-     * 
-     * @param sn	The user's chosen screen name
-     * @param first	The user's first name
-     * @param last	The user's last name
-     * @param anAge	The user's age
-     * @param pass	The user's chosen password
-     * @param ad	The user's administration privilege - should always be false unless creating a new user from the Admin Class
-     */
-	Admin(String sn, String first, String last, LocalDate bDay, int pass, String gender) {
-		super(sn, first, last, bDay, pass, true, gender);
-		
-	}
+	private String firstName;
+	private String lastName;
 	
-	public void upgradeToAdmin(User user){
-		//TODO: Get all the information from the user, delete the user from the main list, re-add the user only as an Admin Object.
-		
-	}
 	
-	public void searchUsers(){
-		//TODO: Allows an admin to search the entire list of users.
-		//Note: the search below is only an example, although users can be searched for by full name, first name, last name or screen name
-		String search = Run.getStrResponse("Enter the full name of the user you are looking for");
+	Admin(String firstNameIn, String lastNameIn) 
+	{
+		super(firstNameIn, lastNameIn);
 	}
 
+
+	/**
+	 * @return the firstName
+	 */
+	public String getFirstName() {
+		return firstName;
+	}
+
+
+	/**
+	 * @param firstName the firstName to set
+	 */
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	/**
+	 * @return the lastName
+	 */
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	/**
+	 * @param lastName the lastName to set
+	 */
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	
 }
