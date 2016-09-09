@@ -18,11 +18,9 @@ import java.util.*;
 
 public class Run {
 	
-	//Scanner sc = new Scanner(System.in);
-	
-	
 	private User aUser;
 	private Admin anAdmin;
+	private static Scanner userIn;
 	
 
 		
@@ -33,24 +31,19 @@ public class Run {
 	 * @return Returns 1 for testing purposes to show that it ran properly
 	 */
 	public int run() {
+		userIn = new Scanner(System.in);
 	    Connection conn = null;
 		System.out.println("Starting Connection to DB");
-		conn = MYSQLconnect.getConnection();
+		//conn = MYSQLconnect.getConnection();
 		
 		System.out.println("Created Connection \n");
 
 		//Prompt user
 		int hold = getNumResponse("Please select an option: \n\t1: Log In \n\t2: Create New User", 1, 2);
-		System.out.println("Response = " + hold);
 		if(hold == 1){
 			logon();
 		}else if(hold == 2){
 			aUser = createUser();
-		}
-		
-		if(aUser.getAdmin()){ 
-			adminRun();
-		}else{
 			userRun();
 		}
 		return -1;
@@ -62,6 +55,7 @@ public class Run {
 	 * This method will log the user on
 	 */
 	public void logon(){
+<<<<<<< HEAD
 		
 		Statement statement = null;
 		
@@ -81,8 +75,10 @@ public class Run {
 
 	
 =======
+=======
+		System.out.println("This method runs...");
+>>>>>>> branch 'master' of https://github.com/aodhainmcdaid/Insurance.git
 		
-		Scanner keyIn = new Scanner(System.in);
 		//Temporary login- will be modified later
 		
 		String uname="aaa";
@@ -98,7 +94,6 @@ public class Run {
 		else{
 			System.out.print("wrong username");
 		}
-		keyIn.close();
 			
 >>>>>>> branch 'master' of https://github.com/aodhainmcdaid/Insurance.git
 	}
@@ -115,8 +110,8 @@ public class Run {
 	 */
 	}
 	public void userRun(){
-			
-
+		//TODO: Generate what the User can do once logged in
+		System.out.println("This method runs");
 	}
 	
 	/**
@@ -137,27 +132,23 @@ public class Run {
 	static public int getNumResponse(String aString, int min, int max){
 		//variables
 		int response = min - 3; //make sure that the default response cannot be marked as valid
-		Scanner in = new Scanner(System.in);
 		Boolean noResponse = true;
 		
 		//Ask the user for their input
 		while(noResponse){
 			System.out.println(aString);
 			try{
-				response = in.nextInt();
+				response = userIn.nextInt();
 				if(response >= min && response <= max){
 					noResponse = false; //You have a response if the given number is between the min and max given
 				}else{
 					System.out.println("Invalid Response.");
 				}
 			}catch(InputMismatchException e){
-				in.next();
+				userIn.next();
 				System.out.println("Bad Response");
 			}
 		}
-		
-		//close the scanner down and return the response
-		in.close(); 
 		return response;
 	}
 
@@ -168,17 +159,15 @@ public class Run {
 	 */
 	static public String getStrResponse(String aString){
 		String response = "";
-		Scanner input = new Scanner(System.in);
 		while(true){
 			System.out.println(aString);
-			response = input.next();
+			response = userIn.next();
 			String hold = "Is " + response + " correct? \n\t1: Yes \n\t2: No";
 			int ans = getNumResponse(hold, 1, 2);
 			if(ans == 1){
 				break;
 			}
 		}
-		//input.close();
 		return response;
 	}
 	
@@ -238,22 +227,14 @@ public class Run {
 		return aNewUser;
 	}
 	
-	
-	/**
-	 * This method is to shut down the program - Closing connections to the Database will be done here.
-	 */
-	public void shutdown() {
-		// TODO Auto-generated method stub
-		//needs to close down the database connection
-	}
-	
-	
 	/**
 	 * 
 	 * @return display login for admin
 	 */
 	public static void displayAdminMenu()
 	{
+		//This is the same 
+		//You don't need to do a scanner, you should be using the getNumResponse method. 
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("\n\n\t*************\n");
@@ -287,30 +268,15 @@ public class Run {
 	 */
 	public static void displayClientMenu()
 	{
-		Scanner sc = new Scanner(System.in);
-		System.out.println("\n\n\t*************\n");
-	    System.out.println("\n\tWelcome to the insurance company");
-	    System.out.println("\t*************\n");
-	    System.out.println("1.\tCreate New Policy");
-	    System.out.println("2.\tView Policy");
-	    System.out.println("3.\tCancel Policy");
-	    System.out.println("0.\tExit\n\n");   
-	  
-	    System.out.print("Select Option: ");
-	    int userIn= sc.nextInt();
-	    
-	    if (userIn==1) {
-	        //method1;
-	    }
-	    if (userIn==2) {
-	        //method1;
-	    }
-	    if (userIn==3) {
-	        //method1;
-	    }
-	    if (userIn==0) {
-	        //method1;
-	    }
+		//This is the same method called userRun
+	}
+	
+	/**
+	 * This method is to shut down the program - Closing connections to the Database will be done here.
+	 */
+	public void shutdown() {
+		// TODO Auto-generated method stub
+		//needs to close down the database connection
 	}
 
 }
