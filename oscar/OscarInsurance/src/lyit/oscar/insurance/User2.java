@@ -46,10 +46,11 @@ public class User2 {
 		}
 		public String getTitle(){
 			return title;
-			//aaaa
+			
 		}
 		public void setFname(String fnameIn){
 			this.title = fnameIn;
+			//dddd
 	
 		}
 		public String getFname(){
