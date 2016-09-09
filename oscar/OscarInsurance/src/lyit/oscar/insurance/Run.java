@@ -3,19 +3,26 @@ package lyit.oscar.insurance;
 import java.util.InputMismatchException;
 import java.sql.Connection;
 import java.time.LocalDate;
-import java.util.Scanner;
+import java.util.*;
+
 
 /**
  * @author Melissa and Daniela
+ * 	Aodhain McDaid
+ *  Fred Manu
  */
+	
+
 public class Run {
+	
+	Scanner sc = new Scanner(System.in);
+	
+	
 	private User aUser;
 	private Admin anAdmin;
+	
 
-	//private passwrd= "password";
-	
-	
-	
+		
 	/**
 	 * This method runs the main program. It first starts the data base and then it prompts the user.
 	 * It runs based off the user choice
@@ -33,7 +40,7 @@ public class Run {
 		int hold = getNumResponse("Please select an option: \n\t1: Log In \n\t2: Create New User", 1, 2);
 		System.out.println("Response = " + hold);
 		if(hold == 1){
-			logon();
+			
 		}else if(hold == 2){
 			aUser = createUser();
 		}
@@ -51,39 +58,42 @@ public class Run {
 	 * This method will log the user on
 	 */
 	public void logon(){
-		//Temporary fix- will be modified later
-		String uname="u";
-		String pass="u";
 		
-		String aname="a";
-		String apass="a";
+		Scanner keyIn = new Scanner(System.in);
+		//Temporary login- will be modified later
+		
+		System.out.println("Enter Username");
+		String uname=keyIn.next();
 		
 		
-		System.out.print("Enter Username");
-		{
-			if(uname=="u")
-			{	
-				
-				
-			}
+		System.out.println("Enter Password");
+		String pass= keyIn.next();
+		
+		
 			
-			
-			
-			
+		if(uname.equalsIgnoreCase("u")&&pass.equalsIgnoreCase("u"))
+		{	
+			displayClientMenu();
 		}
 		
-		
-		
-		
-		
+		else{
+			System.out.print("wrong username");
+		}
+			
 	}
+		
+		
+		
+		
+		
+	
 	
 	/**
 	 * This method allows the user to do limited things with their account - either purchase a policy if there isn't 
 	 * a policy already purchased, or view the policy that they have.
 	 */
 	public void userRun(){
-			System.out.print("__________"+"User Menu"+"___________");
+			
 
 	}
 	
@@ -222,6 +232,8 @@ public class Run {
 	 */
 	public static void displayAdminMenu()
 	{
+		Scanner sc = new Scanner(System.in);
+		
 		System.out.println("\n\n\t*************\n");
 	    System.out.println("\n\tWelcome to the insurance company");
 	    System.out.println("\t*************\n");
@@ -229,6 +241,22 @@ public class Run {
 	    System.out.println("2.\tUpdate cutomer");
 	    System.out.println("3.\tDelete customer");
 	    System.out.println("0.\tExit\n\n");   
+	    
+	    System.out.print("Select Option: ");
+	    int userIn= sc.nextInt();
+	    
+	    if (userIn==1) {
+	        //method1;
+	    }
+	    if (userIn==2) {
+	        //method1;
+	    }
+	    if (userIn==3) {
+	        //method1;
+	    }
+	    if (userIn==0) {
+	        //method1;
+	    }
 	}
 	
 	/**
@@ -237,6 +265,7 @@ public class Run {
 	 */
 	public static void displayClientMenu()
 	{
+		Scanner sc = new Scanner(System.in);
 		System.out.println("\n\n\t*************\n");
 	    System.out.println("\n\tWelcome to the insurance company");
 	    System.out.println("\t*************\n");
@@ -244,6 +273,22 @@ public class Run {
 	    System.out.println("2.\tView Policy");
 	    System.out.println("3.\tCancel Policy");
 	    System.out.println("0.\tExit\n\n");   
+	    
+	    System.out.print("Select Option: ");
+	    int userIn= sc.nextInt();
+	    
+	    if (userIn==1) {
+	        //method1;
+	    }
+	    if (userIn==2) {
+	        //method1;
+	    }
+	    if (userIn==3) {
+	        //method1;
+	    }
+	    if (userIn==0) {
+	        //method1;
+	    }
 	}
 
 }
