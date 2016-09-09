@@ -205,5 +205,36 @@ public class Run {
 		// TODO Auto-generated method stub
 		//needs to close down the database connection
 	}
+	
+	
+	/**
+	 * 
+	 * @return display login for admin
+	 */
+	public static void displayAdminMenu()
+	{
+		System.out.println("\n\n\t*************\n");
+	    System.out.println("\n\tWelcome to the insurance company");
+	    System.out.println("\t*************\n");
+	    System.out.println("1.\tView Policy");
+	    System.out.println("2.\tUpdate cutomer");
+	    System.out.println("3.\tDelete customer");
+	    System.out.println("0.\tExit\n\n");   
+	}
+	
+	/**
+	 * 
+	 * @return display login for customer
+	 */
+	public static void displayClientMenu()
+	{
+		System.out.println("\n\n\t*************\n");
+	    System.out.println("\n\tWelcome to the insurance company");
+	    System.out.println("\t*************\n");
+	    System.out.println("1.\tCreate New Policy");
+	    System.out.println("2.\tView Policy");
+	    System.out.println("3.\tCancel Policy");
+	    System.out.println("0.\tExit\n\n");   
+	}
 
 }
