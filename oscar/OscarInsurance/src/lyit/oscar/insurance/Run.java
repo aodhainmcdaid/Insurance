@@ -61,7 +61,7 @@ public class Run {
 	 * This method will log the user on
 	 */
 	public void logon(){
-<<<<<<< HEAD
+		
 		Statement statement = null;
 		
 
