@@ -2,6 +2,8 @@ package lyit.oscar.insurance;
 
 import java.util.InputMismatchException;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -39,24 +41,39 @@ public class Run {
 		}else{
 			userRun();
 		}
+		return -1;
 		
-		return 1;
+	
 	}
 	
 	/**
 	 * This method will log the user on
 	 */
 	public void logon(){
+		Statement statement = null;
+		
+
+	/*	System.out.println("Please enter your screen name");
+	try {
+		statement =  MYSQLconnect.getConnection().createStatement();
+		
 		//TODO: Get the user to enter their screen name, search the list for that screen name, produce an error if no screen name exists
 		//TODO: After the user is seen to exist, ask them for the password, turn it to a hash and use the logon for the user
 		//TODO: If password fails, make them start over from the beginning of the program else make aUser = the user details
 		//TODO: Make sure to check if the User is an Admin object or a User object so that the admins will have access to their admin privileges
+	     } catch (SQLException e) {
+
+		System.out.println(e.getMessage());
+	     }
+
+	
 	}
 	
 	/**
 	 * This method allows the user to do limited things with their account - either purchase a policy if there isn't 
 	 * a policy already purchased, or view the policy that they have.
 	 */
+	}
 	public void userRun(){
 		//TODO: Generate what the User can do once logged in
 	}
