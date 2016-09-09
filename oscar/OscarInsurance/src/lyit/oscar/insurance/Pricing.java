@@ -6,7 +6,9 @@ import java.util.Random;
  * @author Melissa Melaugh
  */
 public class Pricing {
-	//Variables
+	double  price= 0;
+	int discaunt=0;
+	
 	private User currentUser;
 	
 	/**
@@ -22,7 +24,10 @@ public class Pricing {
 	 * This method looks at the current user and generates a price based on their data.
 	 * If they wish to purchase, it generates a policy number and updates the User's information.
 	 */
-	private void generatePrice(){
+	private void generatePrice()
+	
+	{ 
+		
 		//TODO Generate a price for the user, and then ask them if they want to purchase 
 		//TODO: When purchasing, ask how often they would like to pay
 		
