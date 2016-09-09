@@ -7,6 +7,7 @@ package lyit.oscar.insurance;
  * @author Melissa Melaugh
  * This class's soul function is to start the program.
  */
+import java.util.*;
 public class Main {
 	/**
 	 * @author Melissa Melaugh

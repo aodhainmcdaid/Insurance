@@ -19,7 +19,7 @@ public class ConectionDBTrue {
 // conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/insurance_schema,user=root&password=francesca12");
 			String connectionUrl = "jdbc:mysql://localhost:3306/insurance_schema?autoReconnect=true&useSSL=false";
 			String connectionUser = "root";
-			String connectionPassword = "francesca12";
+			String connectionPassword = "password";
 			conn = DriverManager.getConnection(connectionUrl, connectionUser, connectionPassword);
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery("SELECT  idPerson,First_name,Surname FROM person_table");
