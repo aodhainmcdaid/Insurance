@@ -12,6 +12,10 @@ public class Run {
 	private User aUser;
 	private Admin anAdmin;
 
+	//private passwrd= "password";
+	
+	
+	
 	/**
 	 * This method runs the main program. It first starts the data base and then it prompts the user.
 	 * It runs based off the user choice
@@ -47,10 +51,31 @@ public class Run {
 	 * This method will log the user on
 	 */
 	public void logon(){
-		//TODO: Get the user to enter their screen name, search the list for that screen name, produce an error if no screen name exists
-		//TODO: After the user is seen to exist, ask them for the password, turn it to a hash and use the logon for the user
-		//TODO: If password fails, make them start over from the beginning of the program else make aUser = the user details
-		//TODO: Make sure to check if the User is an Admin object or a User object so that the admins will have access to their admin privileges
+		//Temporary fix- will be modified later
+		String uname="u";
+		String pass="u";
+		
+		String aname="a";
+		String apass="a";
+		
+		
+		System.out.print("Enter Username");
+		{
+			if(uname=="u")
+			{	
+				
+				
+			}
+			
+			
+			
+			
+		}
+		
+		
+		
+		
+		
 	}
 	
 	/**
@@ -58,7 +83,8 @@ public class Run {
 	 * a policy already purchased, or view the policy that they have.
 	 */
 	public void userRun(){
-		//TODO: Generate what the User can do once logged in
+			System.out.print("__________"+"User Menu"+"___________");
+
 	}
 	
 	/**

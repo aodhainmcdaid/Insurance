@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Admin extends User {
 	/**
-	 * TODO: Generate Admin Methods
+	 * TODO: Generate Admin Methodsa
 	 */
 	
 	/**
