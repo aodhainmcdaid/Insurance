@@ -1,46 +1,14 @@
 package lyit.oscar.insurance;
 
-public class Admin2 {
-/*
+public class Admin2 extends User2 {
+
 	
-	private String firstName;
-	private String lastName;
+	/*private String firstName;
+	private String lastName;*/
 	
 	
-	Admin(String firstNameIn, String lastNameIn) 
+	public Admin2(String first, String last) 
 	{
-		super(firstName, lastName);
+		super(first, last);
 	}
-
-
-	*//**
-	 * @return the firstName
-	 *//*
-	public String getFirstName() {
-		return firstName;
-	}
-
-
-	*//**
-	 * @param firstName the firstName to set
-	 *//*
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-
-	*//**
-	 * @return the lastName
-	 *//*
-	public String getLastName() {
-		return lastName;
-	}
-
-
-	*//**
-	 * @param lastName the lastName to set
-	 *//*
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}*/
 }
