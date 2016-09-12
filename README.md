@@ -16,7 +16,7 @@ Tools required:
 - Use Javadoc to comment your code
 - Consider performance – allow time to run a performance testing tool such as jconsole or jrat
 - The main documentation may be submitted by any one member of the team – however the conclusions section is unique to all team members and will be marked as such. This constitutes a large portion of the grades.
-- A reflective log must be filled in a minimum of twice a week. This is found on blackboard.
+- A reflective log must be filled in a minimum of twice a week.  found on blackboard.
 
 Grading:
 - GIT 5
