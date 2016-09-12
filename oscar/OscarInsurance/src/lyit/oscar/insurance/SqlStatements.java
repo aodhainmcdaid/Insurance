@@ -26,8 +26,8 @@ public class SqlStatements
 
 		try {
 			connection = MYSQLconnect.getConnection();
-			String addCust = "INSERT INTO Customer (title,firstName,lastName,dob, phone,gender," + 
-					"email,address,policyNo,policyType) VALUES (?,?,?,?,?,?,?,?,?,?)";
+			String addCust = "INSERT INTO person_table (title,First_name,Surname,Date_of_birth, TelephonE,Gender," + 
+					"Email,Address,policyNo,policyType) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 			statement = connection.prepareStatement(addCust);
 			statement.setString(1, aUser.getTitle());

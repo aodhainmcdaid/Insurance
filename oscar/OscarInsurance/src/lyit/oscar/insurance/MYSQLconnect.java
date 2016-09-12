@@ -12,9 +12,9 @@ import java.sql.SQLException;
 public class MYSQLconnect {
     //static reference to itself
     private static  MYSQLconnect instance = new  MYSQLconnect();
-    public static final String URL = "jdbc:mysql://localhost:3306/insurance_schema?autoReconnect=true&useSSL=false";
+    public static final String URL = "jdbc:mysql://localhost:3306/insurance?autoReconnect=true&useSSL=false";
     public static final String USER = "root";
-    public static final String PASSWORD ="francesca12";
+    public static final String PASSWORD ="password";
     public static final String DRIVER_CLASS = "com.mysql.jdbc.Driver"; 
      
     /**
@@ -39,7 +39,7 @@ public class MYSQLconnect {
         try {
             //Step 3: Establish Java MySQL connection
             connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Connected to Database.");
+            //System.out.println("Connected to Database.");
             
         } catch (SQLException e) {
             System.out.println("ERROR: Unable to Connect to Database.");
