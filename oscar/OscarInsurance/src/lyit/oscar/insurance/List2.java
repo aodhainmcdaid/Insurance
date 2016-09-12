@@ -162,6 +162,7 @@ public class List2 {
 	public static policyDetails getPolicyDetails()
 	{
 		return allPolicy.get(allPolicy.size()-1);
+		
 	}
 }
 
