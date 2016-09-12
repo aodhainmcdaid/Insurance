@@ -37,7 +37,7 @@ public class User2 {
 	 * @param pass	The user's chosen password
 	 * @param ad		The user's administration privilege - should always be false unless creating a new user from the Admin Class
 	 */
-	public User2(String t, String first, String last, LocalDate bday,String pho, String gen, String em, String add, int pType){
+	public User2( String t, String first, String last, LocalDate bday,String pho, String gen, String em, String add){
 		this.title = t;
 		this.firstName = first;
 		this.lastName = last;
@@ -46,7 +46,7 @@ public class User2 {
 		this.gender = gen;
 		this.email = em;
 		this.address = add;
-		this.policyType = pType;
+		
 	}
 
 	public User2(String first, String last)
@@ -148,6 +148,7 @@ public class User2 {
 	{
 		String str = "";    
 
+		str = str + "\nID: " +(getPersonID());
 		str = str + "\ntitle: " +(getTitle().isEmpty()?"":getTitle());
 		str = str + "\nfirst name: "+(getFname().isEmpty()?"":getFname());
 		str = str + "\nlast name: "+(getlname().isEmpty()?"":getlname());
@@ -165,5 +166,9 @@ public class User2 {
 	{
 		personID=counter;
 		counter++;
+	}
+	public int getPersonID()
+	{
+		return personID;
 	}
 }

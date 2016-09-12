@@ -26,10 +26,11 @@ public class SqlStatements
 
 		try {
 			connection = MYSQLconnect.getConnection();
-			String addCust = "INSERT INTO person_table (title,First_name,Surname,Date_of_birth, TelephonE,Gender," + 
-					"Email,Address,policyNo,policyType) VALUES (?,?,?,?,?,?,?,?,?,?)";
+			String addCust = "INSERT INTO person_table (personID,title,First_name,Surname,Date_of_birth, Telephone,Gender," + 
+					"Email,Address,policyID) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 			statement = connection.prepareStatement(addCust);
+			statement.setString(1, aUser.get);
 			statement.setString(1, aUser.getTitle());
 			statement.setString(2, aUser.getFname());
 			statement.setString(3, aUser.getlname());
@@ -39,7 +40,7 @@ public class SqlStatements
 			statement.setString(7, aUser.getEmail());
 			statement.setString(8, aUser.getAddress());
 			statement.setString(9, aUser.getPolicyNo());
-			statement.setInt(10, aUser.getPolicyType());
+			
 
 			int insertRows = statement.executeUpdate();
 			if (insertRows > 0) {

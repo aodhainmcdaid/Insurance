@@ -270,9 +270,6 @@ public class run2 {
 			String email = getStrResponse("Please input your email: ");
 			String address = getStrResponse("Please input your address: ");
 			
-				
-			
-			
 			//String policyNo= "1";
 			LocalDate birthday = LocalDate.now();
 
@@ -321,11 +318,12 @@ public class run2 {
 			
 			//Create the user based on the given information
 			//String polNum  = policyId();
-			User2 aNewUser = new User2(title, first, last, birthday, phone, a_gender,email, address, polType);
+			User2 aNewUser = new User2(title, first, last, birthday, phone, a_gender,email, address);
 			
 			// TODOwill have to work on the policy number. run 1 has nice codes. this is dummy
 			//Pricing priceUser = new Pricing(aNewUser); 
 			aNewUser.setPersonID();
+			aNewUser.getAge();
 			
 			System.out.print("Select Policy Type: ");
 			String type = getStrResponse("1)Partial Coverage 2)Full Coverage: ");
@@ -337,7 +335,7 @@ public class run2 {
 			//payment type
 			
 			
-			List2.addUser(aNewUser);
+			//List2.addUser(aNewUser);
 			System.out.print("aaa");
 			return aNewUser;
 		}
