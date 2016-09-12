@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 //Run2 created to account for problems in original
@@ -34,6 +35,7 @@ public class run2 {
 
 	public static void run3() 
 	{
+		
 		Scanner keyIn = new Scanner(System.in);
 		Connection conn = null;
 		System.out.println("Starting Connection to DB");
@@ -46,7 +48,7 @@ public class run2 {
 			System.out.println("\nEnter Option: ");
 
 			option = keyIn.nextInt(); 
-		
+			
 
 			switch(option)
 			{
@@ -59,8 +61,11 @@ public class run2 {
 				case 1:                                           
 					User2 client = createUser();
 					User2 client2 = List2.addUser(client);
+					policyDetails policy1 = List2.getPolicyDetails();
+					//List2.addPolicy();
 					System.out.print("Added!");
-					sqlEngine.insertCust(client2);           
+					//sqlEngine.insertCust(client2);          
+					//sqlEngine.insertPol(polNo);
 					
 					break;
 
@@ -69,8 +74,9 @@ public class run2 {
 					User2 client3 = List2.viewPolicy(numb2);
 					if(client3 != null)
 					{
-						User2 client4 = sqlEngine.selectCust(client3);
-						System.out.println(client4);
+						//User2 client4 = sqlEngine.selectCust(client3);
+						System.out.println(client3);
+						
 					}
 					else
 					{
@@ -325,18 +331,26 @@ public class run2 {
 			aNewUser.setPersonID();
 			aNewUser.getAge();
 			
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+					
 			System.out.print("Select Policy Type: ");
 			String type = getStrResponse("1)Partial Coverage 2)Full Coverage: ");
-			String start = getStrResponse("Enter Policy start Date: ");
-			String end = getStrResponse("Enter Policy end Date: ");
+			String startdate=getStrResponse("Enter Policy start Date in this format (yyyy-MM-dd): ");
+			LocalDate start =LocalDate.parse(startdate,dtf);
+			String enddate=getStrResponse("Enter Policy end Date in this format (yyyy-MM-dd):: ");
+			LocalDate end =LocalDate.parse(enddate,dtf);
 			String pay_type = getStrResponse("Enter payment type: ");
-			// when do u want it to start 
-			//to end 
-			//payment type
 			
+			
+			policyDetails aNewPolicy= new policyDetails(type, start, end, pay_type);
+			
+			aNewPolicy.generatePolicyID();
+			List2.addPolicy(aNewPolicy);
+			
+
 			
 			//List2.addUser(aNewUser);
-			System.out.print("aaa");
+			//System.out.print("aaa");
 			return aNewUser;
 		}
 

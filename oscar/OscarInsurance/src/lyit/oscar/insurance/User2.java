@@ -21,7 +21,7 @@ public class User2 {
 	private String gender;
 	private String email;
 	private String address;
-	private String policyNo;
+	private int policyNo;
 	private int policyType;
 	private int personID;
 	private static int counter=0;
@@ -117,11 +117,11 @@ public class User2 {
 		return address;
 
 	}
-	public void setPolicyNo(String policyNoIN){
+	public void setPolicyNo(int policyNoIN){
 		this.policyNo = policyNoIN;
 
 	}
-	public String getPolicyNo(){
+	public int getPolicyNo(){
 		return policyNo;
 
 	}
@@ -158,7 +158,7 @@ public class User2 {
 		str = str + "\ngender: "+(getGender().isEmpty()?"":getGender());
 		str = str + "\nemail: "+(getEmail().isEmpty()?"":getEmail());
 		str = str + "\npolicy type: "+(getPolicyType() > 0? getPolicyType():"");
-		str = str + "\npolicy number: "+(getPolicyNo().isEmpty()?"":getPolicyNo());
+		str = str + "\npolicy number: "+(getPolicyNo());
 
 		return str;
 	}

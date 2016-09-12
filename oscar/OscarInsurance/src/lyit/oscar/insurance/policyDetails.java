@@ -15,6 +15,8 @@ public class policyDetails {
 	private LocalDate start;
 	private LocalDate end;
 	private String payment;
+	private int policyID;
+	private static int counter=5;
 	
 	
 	
@@ -73,8 +75,18 @@ public class policyDetails {
 		return payment;
 		
 	}
-	
-	
+	public int getPolicyID()
+	{
+		return policyID;
+		
+		
+	}
+	public void generatePolicyID()
+	{
+		policyID=counter;
+		counter++;
+		
+	}
 	
 	
 	

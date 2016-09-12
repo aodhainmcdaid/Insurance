@@ -12,7 +12,8 @@ public class List2 {
 	//Variables
 	
 	static ArrayList <User2> allUsers = new ArrayList<>();
-	User2 user;
+	static ArrayList <policyDetails> allPolicy = new ArrayList<>();
+	//User2 user;
 	//private String policyNo;
 
 
@@ -75,6 +76,39 @@ public class List2 {
 		return aUser;
 	}
 	
+	// Design method to add user to list
+		static public policyDetails addPolicy(policyDetails policy)
+		{
+			
+			if(allPolicy.isEmpty())
+			{
+				allPolicy.add(policy);
+			}
+			else
+			{
+				policyDetails newPolicy = findPolicyID(policy.getPolicyID(), allPolicy); 
+				if(newPolicy == null)
+				{
+					allPolicy.add(newPolicy);
+					return newPolicy;
+				}
+			}
+			return policy;
+		}
+		static policyDetails findPolicyID(int policyNum, ArrayList<policyDetails> allPolicy)
+		{ 	 
+			for(policyDetails a : allPolicy)  //for each user in list
+			{	
+				if(a.getPolicyID() == policyNum)
+				{				
+						return a; //return immediately if found
+				}
+			}
+			return null;  //not found.
+				
+		}
+		
+	
 	//delete customer from list 
 	static User2 deleteUser(String policyNum)
 	{
@@ -124,6 +158,10 @@ public class List2 {
 	public static void displayUser(User2 aUser)
 	{
 		System.out.println(aUser);
-	}		
+	}	
+	public static policyDetails getPolicyDetails()
+	{
+		return allPolicy.get(allPolicy.size()-1);
+	}
 }
 

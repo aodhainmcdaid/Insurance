@@ -30,7 +30,7 @@ public class SqlStatements
 					"Email,Address,policyID) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
 			statement = connection.prepareStatement(addCust);
-			statement.setString(1, aUser.get);
+			//statement.setString(1, aUser.get);
 			statement.setString(1, aUser.getTitle());
 			statement.setString(2, aUser.getFname());
 			statement.setString(3, aUser.getlname());
