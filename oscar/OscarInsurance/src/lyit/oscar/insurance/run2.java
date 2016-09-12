@@ -19,11 +19,11 @@ import java.util.*;
 public class run2 {
 
 	//private User aUser;
-	//private Admin anAdmin;
+	private Admin anAdmin;
 
 
-	//String AdminPass= "pass";
-	//String UserPass= "pass2";
+	String AdminPass= "pass";
+	String UserPass= "pass2";
 
 	//Scanner keyIn;
 	 static SqlStatements sqlEngine = new SqlStatements(); 
