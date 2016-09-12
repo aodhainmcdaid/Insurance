@@ -21,6 +21,7 @@ public class run2 {
 
 	//private User aUser;
 	private Admin2 anAdmin;
+	User2 user;
 
 
 	String AdminPass= "pass";
@@ -261,13 +262,18 @@ public class run2 {
 
 		public static User2 createUser(){
 			//Create the title name, and user's full name
-			String sn = getStrResponse("Please input your title: ");
+			
+			String title = getStrResponse("Please input your title: ");
 			String first = getStrResponse("Please input your first name: ");
 			String last = getStrResponse("Please input your last name: ");
 			String phone = getStrResponse("Please input your phone: ");
 			String email = getStrResponse("Please input your email: ");
 			String address = getStrResponse("Please input your address: ");
-			String policyNo= "1";
+			
+				
+			
+			
+			//String policyNo= "1";
 			LocalDate birthday = LocalDate.now();
 
 			//Create the User's Birthday
@@ -315,11 +321,22 @@ public class run2 {
 			
 			//Create the user based on the given information
 			//String polNum  = policyId();
-			User2 aNewUser = new User2(sn, first, last, birthday, phone, a_gender,email, address, polType);
+			User2 aNewUser = new User2(title, first, last, birthday, phone, a_gender,email, address, polType);
 			
 			// TODOwill have to work on the policy number. run 1 has nice codes. this is dummy
 			//Pricing priceUser = new Pricing(aNewUser); 
-			aNewUser.setPolicyNo(policyNo);
+			aNewUser.setPersonID();
+			
+			System.out.print("Select Policy Type: ");
+			String type = getStrResponse("1)Partial Coverage 2)Full Coverage: ");
+			String start = getStrResponse("Enter Policy start Date: ");
+			String end = getStrResponse("Enter Policy end Date: ");
+			String pay_type = getStrResponse("Enter payment type: ");
+			// when do u want it to start 
+			//to end 
+			//payment type
+			
+			
 			List2.addUser(aNewUser);
 			System.out.print("aaa");
 			return aNewUser;
