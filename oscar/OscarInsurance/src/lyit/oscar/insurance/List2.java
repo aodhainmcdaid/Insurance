@@ -12,7 +12,7 @@ public class List2 {
 	//Variables
 	
 	static ArrayList <User2> allUsers = new ArrayList<>();
-	User user;
+	User2 user;
 	//private String policyNo;
 
 

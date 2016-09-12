@@ -9,6 +9,7 @@ package lyit.oscar.insurance;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.Date;
+import java.util.Random;
 
 public class User2 {
 	//Variables 
@@ -22,6 +23,8 @@ public class User2 {
 	private String address;
 	private String policyNo;
 	private int policyType;
+	private int personID;
+	private static int counter=0;
 
 
 	/**
@@ -136,7 +139,11 @@ public class User2 {
 				&&  firstName == anotherUser.firstName
 				&&  lastName == anotherUser.lastName);
 	}
-
+	 public int getAge(){
+  	   LocalDate today = LocalDate.now();
+  	   int age = Period.between(dob, today).getYears();
+  	   return age;
+     }
 	public String toString()
 	{
 		String str = "";    
@@ -153,5 +160,10 @@ public class User2 {
 		str = str + "\npolicy number: "+(getPolicyNo().isEmpty()?"":getPolicyNo());
 
 		return str;
+	}
+	public void setPersonID()
+	{
+		personID=counter;
+		counter++;
 	}
 }

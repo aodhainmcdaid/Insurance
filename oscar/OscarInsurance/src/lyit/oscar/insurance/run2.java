@@ -1,5 +1,6 @@
 /**
- * @author Melissa and Daniela
+ * @authors
+ *  Melissa and Daniela
  * 	Aodhain McDaid
  *  Fred Manu
  */
@@ -19,7 +20,7 @@ import java.util.*;
 public class run2 {
 
 	//private User aUser;
-	private Admin anAdmin;
+	private Admin2 anAdmin;
 
 
 	String AdminPass= "pass";
