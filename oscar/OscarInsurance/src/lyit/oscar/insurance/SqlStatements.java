@@ -17,7 +17,7 @@ import java.time.LocalDate;
 
 public class SqlStatements
 {
-	//insert customer into the database
+	//insert customer into the databaseAA
 	public void insertCust(User aUser)
 	{
 		PreparedStatement statement = null;
