@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class Run {
+public class RunM {
 	
 	static String AdminPass= "pass";
 	static String UserPass= "pass2";
