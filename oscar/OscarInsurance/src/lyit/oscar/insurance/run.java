@@ -214,21 +214,36 @@ public class run {
 		return response;
 	}
 
-	static public String getStrResponse(String aString){
-		String response = "";
-		Scanner input = new Scanner(System.in);
-		while(true){
+	/**
+	 * Gets a user response from the given instructions
+	 * @param aString	The instructions for what is wanted
+	 * @param min		The minimum the number returned can be
+	 * @param max		The maximum the number returned can be
+	 * @return		The User's input
+	 */
+	static public int getNumResponse(String aString, int min, int max){
+		//variables
+		int response = min - 3; //make sure that the default response cannot be marked as valid
+		Boolean noResponse = true;
+		 
+		//Ask the user for their input
+		while(noResponse){
 			System.out.println(aString);
-			response = input.next();
-			String hold = "Is " + response + " correct? \n\t1: Yes \n\t2: No";
-			int ans = getNumResponse(hold, 1, 2);
-			if(ans == 1){
-				break;
+			try{
+				response = keyIn.nextInt();
+				if(response >= min && response <= max){
+					noResponse = false; //You have a response if the given number is between the min and max given
+				}else{
+					System.out.println("Invalid Response.");
+				}
+			}catch(InputMismatchException e){
+				keyIn.nextLine();
+				System.out.println("Bad Response");
 			}
 		}
 		return response;
-
 	}
+	
 	/**
 	 * Creates a new user based on information that the user provides, and then updates the current user to the newly
 	 * created one from this method.
@@ -236,61 +251,62 @@ public class run {
 	
 
 	public static User createUser(){
+		User aNewUser = new User(null, null, null, null, null, null, null, null);
 		//Create the title name, and user's full name
-
-		String title = getStrResponse("Please input your title: ");
-		String first = getStrResponse("Please input your first name: ");
-		String last = getStrResponse("Please input your last name: ");
-		String phone = getStrResponse("Please input your phone: ");
-		String email = getStrResponse("Please input your email: ");
-		String address = getStrResponse("Please input your address: ");
-
-		//String policyNo= "1";
-		LocalDate birthday = LocalDate.now();
-
-		//Create the User's Birthday
 		while(true){
-			//Ask user for the year and month of their DOB
-			int year = getNumResponse("Please input the year you were born: ", 1900, LocalDate.now().getYear());
-			int month = getNumResponse("Please input the number of the month you were born: ", 1, 12);
-
-			//update birthday with the year and the month
-			birthday = LocalDate.of(year, month, 1);
-
-			//update max day to the length of the birth month so that the user cannot input a number outside of this range
-			int maxDay = birthday.lengthOfMonth();
-
-			//ask for the user's day
-			int day = getNumResponse("Please enter the day you were born: ", 1, maxDay);
-
-			//update Birthday
-			birthday = LocalDate.of(year, month, day);
-
-			String hold = "Is your birthday " + birthday.getDayOfMonth() + " of " + birthday.getMonth() + birthday.getYear() +"? "
-					+ "\n\t1: Yes \n\t2: No";
-			int response = getNumResponse(hold, 1, 2);
-
-			if(response == 1){
+			String title = getStrResponse("Please input your title: ");
+			String first = getStrResponse("Please input your first name: ");
+			String last = getStrResponse("Please input your last name: ");
+			String phone = getStrResponse("Please input your phone: ");
+			String email = getStrResponse("Please input your email: ");
+			String address = getStrResponse("Please input your address: ");
+			
+			//String policyNo= "1";
+			LocalDate birthday = LocalDate.now();
+	
+			//Create the User's Birthday
+			while(true){
+				//Ask user for the year and month of their DOB
+				int year = getNumResponse("Please input the year you were born: ", 1900, LocalDate.now().getYear());
+				int month = getNumResponse("Please input the number of the month you were born: ", 1, 12);
+	
+				//update birthday with the year and the month
+				birthday = LocalDate.of(year, month, 1);
+	
+				//update max day to the length of the birth month so that the user cannot input a number outside of this range
+				int maxDay = birthday.lengthOfMonth();
+	
+				//ask for the user's day
+				int day = getNumResponse("Please enter the day you were born: ", 1, maxDay);
+	
+				//update Birthday
+				birthday = LocalDate.of(year, month, day);
+	
+				String hold = "Is your birthday " + birthday.getDayOfMonth() + " of " + birthday.getMonth() + birthday.getYear() +"? "
+						+ "\n\t1: Yes \n\t2: No";
+				int response = getNumResponse(hold, 1, 2);
+	
+				if(response == 1){
+					break;
+				}
+			}
+	
+			int gender = getNumResponse("Please chose you gender: \n\t1: Male \n\t2:Female", 1, 2);
+			String a_gender = "";
+			if(gender == 1){
+				a_gender = "Male";
+			}else{
+				a_gender = "Female";
+			}
+			
+			//update user
+			aNewUser = new User(title, first, last, birthday, phone, a_gender, email, address);
+			
+			int hold = getNumResponse("Is the information you entered above correct? \n\t1: Yes \n\t2: No", 1, 2);
+			if(hold == 1){
 				break;
 			}
 		}
-
-		/*//Create the user's password - note this should be turned into a 
-			String password = getStrResponse("Please enter a password then hit enter: ");
-			int hashedPassword = password.hashCode();
-		 */
-		int gender = getNumResponse("Please chose you gender: \n\t1: Male \n\t2:Female", 1, 2);
-		String a_gender = "";
-		if(gender == 1){
-			a_gender = "Male";
-		}else{
-			a_gender = "Female";
-		}
-
-		User aNewUser = new User(title, first, last, birthday, phone, a_gender,email, address);
-
-		// TODOwill have to work on the policy number. run 1 has nice codes. this is dummy
-		//Pricing priceUser = new Pricing(aNewUser); 
 		
 		
 		aNewUser.setPersonID();
