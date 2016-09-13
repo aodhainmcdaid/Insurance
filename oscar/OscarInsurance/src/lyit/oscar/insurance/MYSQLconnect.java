@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class MYSQLconnect {
     //static reference to itself
     private static  MYSQLconnect instance = new  MYSQLconnect();
-    public static final String URL = "jdbc:mysql://localhost:3306/insurance?autoReconnect=true&useSSL=false";
+    public static final String URL = "jdbc:mysql://localhost:3306/insurance2?autoReconnect=true&useSSL=false";
     public static final String USER = "root";
     public static final String PASSWORD ="password";
     public static final String DRIVER_CLASS = "com.mysql.jdbc.Driver"; 

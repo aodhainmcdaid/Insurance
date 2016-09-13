@@ -15,7 +15,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		
 		System.out.println("starting App.....");
-		Run.run();
+		run.run3();
 
 		System.out.println("Ending App.....");
 	}
