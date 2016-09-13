@@ -16,20 +16,37 @@ public class Pricing {
 	 */
 	public Pricing(User aUser2){
 		this.currentUser2 = aUser2;
-		generatePrice();
+		generatePrice(aUser2.getAge());
 	}
 	
 	/**
 	 * This method looks at the current User2 and generates a price based on their data.
 	 * If they wish to purchase, it generates a policy number and updates the User2's information.
 	 */
-	public void generatePrice(){
-		//TODO Generate a price for the User2, and then ask them if they want to purchase 
+	private void  generatePrice(int userAge){
+		double price=0.0;
+	    double DISCOUNT1=0.1;
+	    double DISCOUNT2=0.15;
+		
+		double INITIALPRICE= 1000.00;
+		if (userAge >=60)
+			price=INITIALPRICE;
+		else if (userAge>=50)
+			price=price - price* DISCOUNT1;
+		else if (userAge>=40)
+			price=price-price*DISCOUNT2;
+		else if (userAge>=30)
+			price=price-price*2*DISCOUNT1;
+		else if(userAge>=18)
+		    price=price-price *2*DISCOUNT2;
+		else System.out.print("under 18 not able to be a policy holder ");
+		
+	   //TODO Generate a price for the user, and then ask them if they want to purchase 
 		//TODO: When purchasing, ask how often they would like to pay
 		
-		//If the User2 accepts, generate policy number
-		generatePolicyNum();
-		//Update Pricing on the User2's profile
+		//If the user accepts, generate policy number
+	     generatePolicyNum();
+		//Update Pricing on the User's profile
 	}
 	
 	/**
