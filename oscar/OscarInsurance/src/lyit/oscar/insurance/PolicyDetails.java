@@ -66,7 +66,7 @@ public class PolicyDetails {
 		
 		
 	}
-	public LocalDate getEnd()
+	public LocalDate getPolicyEnd()
 	{
 		return end;
 		
@@ -99,7 +99,7 @@ public class PolicyDetails {
       str = str + getPolicyID()+ "\n";
       str = str + getPolicyType()+"\n";
       str = str + getPolicyStart()+"\n";
-	   str = str + getEnd()+"\n";
+	   str = str + getPolicyEnd()+"\n";
 	   str = str + getPaymentType();
       
       return str;
