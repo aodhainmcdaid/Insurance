@@ -60,8 +60,8 @@ public class run2 {
 				{
 				case 1:                                           
 					User2 client = createUser();
-					User2 client2 = List2.addUser(client);
-					policyDetails policy1 = List2.getPolicyDetails();
+					User2 client2 = List.addUser(client);
+					policyDetails policy1 = List.getPolicyDetails();
                System.out.println(" Your policy Number is: " +policy1.getPolicyID());
 					System.out.println("Added!");
                System.out.println(policy1);
@@ -74,7 +74,7 @@ public class run2 {
 
 				case 2: 
 					String numb2 = getStrResponse("\nEnter your Policy Number: ");
-					User2 client3 = List2.viewPolicy(numb2);
+					User2 client3 = List.viewPolicy(numb2);
 					if(client3 != null)
 					{
 						//User2 client4 = sqlEngine.selectCust(client3);
@@ -105,7 +105,7 @@ public class run2 {
 				case 1:
 
 					String numb3 = getStrResponse("\nEnter Client Policy Number: ");
-					User2 client2 = List2.viewPolicy(numb3);
+					User2 client2 = List.viewPolicy(numb3);
 					if(client2 != null)
 					{
 						//User2 client3 = sqlEngine.selectCust(client2);
@@ -122,7 +122,7 @@ public class run2 {
 
 				case 3: 	
 					String numb4 = getStrResponse("\nEnter Client Policy Number: ");
-					User2 client4 = List2.deleteUser(numb4);
+					User2 client4 = List.deleteUser(numb4);
 					if(client4 != null)
 					{
 						//sqlEngine.delCust(client4);
@@ -350,7 +350,7 @@ public class run2 {
 			
 			aNewPolicy.generatePolicyID();
         
-			List2.addPolicy(aNewPolicy);
+			List.addPolicy(aNewPolicy);
          aNewUser.setPolicyNo(Integer.toString(aNewPolicy.getPolicyID()));
 			
 

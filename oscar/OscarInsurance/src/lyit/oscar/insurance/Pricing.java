@@ -42,7 +42,7 @@ public class Pricing {
 		while(true){
 			Random rnd = new Random();
 			polNum = rnd.nextInt(899999999) + 100000000; //makes sure the policy number is between 100000000 and 999999999
-			User2[] User2List = List2.getUser2List(true);
+			User2[] User2List = List.getUser2List(true);
 			Boolean generated = true;
 			
 			//Check to make sure that policy numbers are not duplicated

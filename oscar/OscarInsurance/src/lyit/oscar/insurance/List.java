@@ -8,7 +8,7 @@ package lyit.oscar.insurance;
 	
 import java.util.ArrayList;
 
-public class List2 {
+public class List {
 	//Variables
 	
 	static ArrayList <User2> allUsers = new ArrayList<>();
