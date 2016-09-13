@@ -14,7 +14,7 @@ public class Pricing {
 	 * The constructor for the pricing class
 	 * @param aUser2	this is the current User2
 	 */
-	Pricing(User aUser2){
+	public Pricing(User aUser2){
 		this.currentUser2 = aUser2;
 		generatePrice();
 	}
@@ -23,7 +23,7 @@ public class Pricing {
 	 * This method looks at the current User2 and generates a price based on their data.
 	 * If they wish to purchase, it generates a policy number and updates the User2's information.
 	 */
-	private void generatePrice(){
+	public void generatePrice(){
 		//TODO Generate a price for the User2, and then ask them if they want to purchase 
 		//TODO: When purchasing, ask how often they would like to pay
 		
@@ -36,7 +36,7 @@ public class Pricing {
 	 * This method generates a unique policy number for the User2 between 100000000 and 999999999. 
 	 * It updates the User2's profile with their unique policy number.
 	 */
-	private void generatePolicyNum(){
+	public void generatePolicyNum(){
 		int polNum = 0;
 		
 		//Generates the policy number
