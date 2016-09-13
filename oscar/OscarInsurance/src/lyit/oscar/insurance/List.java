@@ -12,7 +12,7 @@ public class List {
 	//Variables
 	
 	static ArrayList <User2> allUsers = new ArrayList<>();
-	static ArrayList <policyDetails> allPolicy = new ArrayList<>();
+	static ArrayList <PolicyDetails> allPolicy = new ArrayList<>();
 	//User2 user;
 	//private String policyNo;
 
@@ -67,7 +67,7 @@ public class List {
 
    
    // Design method to add user to list
-		static public policyDetails addPolicy(policyDetails policy)
+		static public PolicyDetails addPolicy(PolicyDetails policy)
 		{
 			
 			if(allPolicy.isEmpty())
@@ -76,7 +76,7 @@ public class List {
 			}
 			else
 			{
-				policyDetails newPolicy = findPolicyID(policy.getPolicyID(), allPolicy); 
+				PolicyDetails newPolicy = findPolicyID(policy.getPolicyID(), allPolicy); 
 				if(newPolicy == null)
 				{
 					allPolicy.add(newPolicy);
@@ -128,9 +128,9 @@ public class List {
 		return null;  //not found.
 	}
    
-   static policyDetails findPolicyID(int policyNum, ArrayList<policyDetails> policyList)
+   static PolicyDetails findPolicyID(int policyNum, ArrayList<PolicyDetails> policyList)
 		{ 	 
-			for(policyDetails a : policyList)  //for each user in list
+			for(PolicyDetails a : policyList)  //for each user in list
 			{	
 				if(a.getPolicyID() == policyNum)
 				{				
@@ -178,7 +178,7 @@ public class List {
 	{
 		System.out.println(aUser);
 	}	
-	public static policyDetails getPolicyDetails()
+	public static PolicyDetails getPolicyDetails()
 	{
 		return allPolicy.get(allPolicy.size()-1);
 		

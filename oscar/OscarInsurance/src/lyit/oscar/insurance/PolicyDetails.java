@@ -15,7 +15,7 @@ import java.util.Random;
 
 
 
-public class policyDetails {
+public class PolicyDetails {
 
 	private String type;
 	private LocalDate start;
@@ -26,7 +26,7 @@ public class policyDetails {
 	
 	
 	
-	public policyDetails(String policyType, LocalDate policyStart, LocalDate policyEnd, String paymentType)
+	public PolicyDetails(String policyType, LocalDate policyStart, LocalDate policyEnd, String paymentType)
 	{
 		this.type=policyType;
 		this.start=policyStart;

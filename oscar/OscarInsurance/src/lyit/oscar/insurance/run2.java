@@ -61,7 +61,7 @@ public class run2 {
 				case 1:                                           
 					User2 client = createUser();
 					User2 client2 = List.addUser(client);
-					policyDetails policy1 = List.getPolicyDetails();
+					PolicyDetails policy1 = List.getPolicyDetails();
                System.out.println(" Your policy Number is: " +policy1.getPolicyID());
 					System.out.println("Added!");
                System.out.println(policy1);
@@ -346,7 +346,7 @@ public class run2 {
 			String pay_type = getStrResponse("Enter payment type: ");
 			
 			
-			policyDetails aNewPolicy= new policyDetails(type, start, end, pay_type);
+			PolicyDetails aNewPolicy= new PolicyDetails(type, start, end, pay_type);
 			
 			aNewPolicy.generatePolicyID();
         
