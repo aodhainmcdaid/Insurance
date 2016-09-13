@@ -28,7 +28,7 @@ public class run {
 	String AdminPass= "pass";
 	String UserPass= "pass2";
 
-	//Scanner keyIn;
+	static Scanner keyIn;
 	
 	static SqlStatements sqlEngine = new SqlStatements(); 
 
@@ -37,7 +37,7 @@ public class run {
 	public static void run3() 
 	{
 
-		Scanner keyIn = new Scanner(System.in);
+		keyIn = new Scanner(System.in);
 		Connection conn = null;
 		System.out.println("Starting Connection to DB");
 		conn = MYSQLconnect.getConnection();
@@ -181,46 +181,6 @@ public class run {
 		System.out.println("0.\tExit\n\n");   
 	}
 
-	/**
-	 * Gets a user response from the given instructions
-	 * @param aString	The instructions for what is wanted
-	 * @param min		The minimum the number returned can be
-	 * @param max		The maximum the number returned can be
-	 * @return			The User's correct input
-	 */
-	static public int getNumResponse(String aString, int min, int max){
-		//variables
-		int response = min - 3; //make sure that the default response cannot be marked as valid
-		Scanner in = new Scanner(System.in);
-		Boolean noResponse = true;
-
-		//Ask the user for their input
-		while(noResponse){
-			System.out.println(aString);
-			try{
-				response = in.nextInt();
-				if(response >= min && response <= max){
-					noResponse = false; //You have a response if the given number is between the min and max given
-				}else{
-					System.out.println("Invalid Response.");
-				}
-			}catch(InputMismatchException e){
-				in.next();
-				System.out.println("Bad Response");
-			}
-		}
-
-		//close the scanner down and return the response
-		return response;
-	}
-
-	/**
-	 * Gets a user response from the given instructions
-	 * @param aString	The instructions for what is wanted
-	 * @param min		The minimum the number returned can be
-	 * @param max		The maximum the number returned can be
-	 * @return		The User's input
-	 */
 	static public int getNumResponse(String aString, int min, int max){
 		//variables
 		int response = min - 3; //make sure that the default response cannot be marked as valid
@@ -239,6 +199,18 @@ public class run {
 			}catch(InputMismatchException e){
 				keyIn.nextLine();
 				System.out.println("Bad Response");
+			}
+		}
+		return response;
+	}
+
+	static public String getStrResponse(String aString){
+		String response = "";
+		while(true){
+			System.out.println(aString);
+			response = keyIn.nextLine();
+			if(!response.isEmpty()){
+				break;
 			}
 		}
 		return response;
@@ -310,7 +282,7 @@ public class run {
 		
 		
 		aNewUser.setPersonID();
-		aNewUser.getAge();
+		int age = aNewUser.getAge();
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -324,13 +296,15 @@ public class run {
 
 
 		PolicyDetails aNewPolicy= new PolicyDetails(type, start, end, pay_type);
-
-		aNewPolicy.generatePolicyID();
-
+		
+		Pricing price = new Pricing();
+		int policy = price.generatePolicyNum();
+		aNewPolicy.setPolicyID(policy);
+		double policyPrice = price.generatePrice(age);
+		aNewPolicy.setPolicyCost(policyPrice);
+				
 		List.addPolicy(aNewPolicy);
 		aNewUser.setPolicyNo(Integer.toString(aNewPolicy.getPolicyID()));
-
-
 
 		List.addUser(aNewUser);
 		System.out.print("aaa");

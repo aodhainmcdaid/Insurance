@@ -28,6 +28,7 @@ public class PolicyDetails {
 	
 	
 	
+	
 	public PolicyDetails(String policyType, LocalDate policyStart, LocalDate policyEnd, String paymentType)
 	{
 		this.type=policyType;
@@ -53,7 +54,7 @@ public class PolicyDetails {
 	{
 		return cost;
 	}
-	public void setPolicyCost(int costIn)
+	public void setPolicyCost(double costIn)
 	{
 		cost = costIn;
 	}
@@ -97,10 +98,9 @@ public class PolicyDetails {
 		
 		
 	}
-	public void generatePolicyID()
+	public void setPolicyID(int policyIDIn)
 	{
-		policyID = counter;
-		counter++;
+		policyID = policyIDIn;
 		
 	}
    public String toString()
