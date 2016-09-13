@@ -23,6 +23,7 @@ public class PolicyDetails {
 	private LocalDate end;
 	private String payment;
 	private int policyID;
+	private double cost;
 	private static int counter=5;
 	
 	
@@ -47,6 +48,14 @@ public class PolicyDetails {
 		return type;
 		
 		
+	}
+	public double getPolicyCost()
+	{
+		return cost;
+	}
+	public void setPolicyCost(int costIn)
+	{
+		cost = costIn;
 	}
 	
 	public void setPolicyStart(LocalDate startIn)
