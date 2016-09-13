@@ -1,4 +1,5 @@
 package lyit.oscar.insurance;
+import java.util.ArrayList;
 //imports
 import java.util.Random;
 
@@ -42,13 +43,13 @@ public class Pricing {
 		while(true){
 			Random rnd = new Random();
 			polNum = rnd.nextInt(899999999) + 100000000; //makes sure the policy number is between 100000000 and 999999999
-			User[] User2List = List.getUser2List(true);
+			ArrayList<User> userList = List.getUserList(true);
 			Boolean generated = true;
 			
 			//Check to make sure that policy numbers are not duplicated
-			for(User User:User2List){
-				int toCheck = User.getPolicyNo();
-				if(toCheck == polNum){
+			for(User user:userList){
+				String toCheck = "" + polNum;
+				if(toCheck.equals(user.getPolicyNo())){
 					generated = false; //If it is a duplicate, it's not properly generated
 				}
 			}
@@ -57,7 +58,7 @@ public class Pricing {
 				break;
 			}
 		}
-		currentUser2.setPolicyNo(polNum);
+		currentUser2.setPolicyNo("" + polNum);
 	}
 	
 }
