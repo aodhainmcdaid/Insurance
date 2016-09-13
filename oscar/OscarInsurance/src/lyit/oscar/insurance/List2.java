@@ -29,12 +29,84 @@ public class List2 {
 		}
 	}
 	
-	//return a customer in the list through policy number
+		
+	// Design method to add user to list
+	static public User2 addUser(User2 aUser)
+	{
+		
+		if(allUsers.isEmpty())
+		{
+			allUsers.add(aUser);
+		}
+		else
+		{
+			User2 newUser = find(aUser, allUsers); 
+			if(newUser == null)
+			{
+				allUsers.add(newUser);
+				return newUser;
+			}
+		}
+		return aUser;
+	}
+   
+   //delete customer from list 
+	static User2 deleteUser(String policyNum)
+	{
+		if(!allUsers.isEmpty())
+		{
+			User2 newUser = findPolicy(policyNum, allUsers);	
+			if(newUser != null);
+			{
+				allUsers.remove(newUser);	
+				return newUser;
+			}			
+		}
+		return null;
+	}
+
+   
+   // Design method to add user to list
+		static public policyDetails addPolicy(policyDetails policy)
+		{
+			
+			if(allPolicy.isEmpty())
+			{
+				allPolicy.add(policy);
+			}
+			else
+			{
+				policyDetails newPolicy = findPolicyID(policy.getPolicyID(), allPolicy); 
+				if(newPolicy == null)
+				{
+					allPolicy.add(newPolicy);
+					return newPolicy;
+				}
+			}
+			return policy;
+		}
+
+	//Check if policy exists in the user list
+	public static User2 viewPolicy(String policyNum)
+	{
+		if(!allUsers.isEmpty())
+		{
+			User2 newUser = findPolicy(policyNum, allUsers);
+			if(newUser != null )
+			{
+				return newUser;
+			}
+		}
+		return null;
+	}
+
+   //return a customer in the list through policy number
 	static User2 findPolicy(String policyNum, ArrayList<User2> userList)
 	{ 	 
 		for(User2 a : userList)  //for each user in list
 		{	
-			if(a.getPolicyNo().equalsIgnoreCase(policyNum))
+			//if(a.getPolicyNo().equalsIgnoreCase(policyNum))
+         if(a.getPolicyNo().equalsIgnoreCase(policyNum))
 			{				
 					return a; //return immediately if found
 			}
@@ -55,75 +127,35 @@ public class List2 {
 		}
 		return null;  //not found.
 	}
-	
-	// Design method to add user to list
-	static public User2 addUser(User2 aUser)
-	{
-		
-		if(allUsers.isEmpty())
-		{
-			allUsers.add(aUser);
-		}
-		else
-		{
-			User2 newUser = find(aUser, allUsers); 
-			if(newUser == null)
-			{
-				allUsers.add(newUser);
-				return newUser;
-			}
-		}
-		return aUser;
-	}
-	
-	// Design method to add user to list
-		static public policyDetails addPolicy(policyDetails policy)
-		{
-			
-			if(allPolicy.isEmpty())
-			{
-				allPolicy.add(policy);
-			}
-			else
-			{
-				policyDetails newPolicy = findPolicyID(policy.getPolicyID(), allPolicy); 
-				if(newPolicy == null)
-				{
-					allPolicy.add(newPolicy);
-					return newPolicy;
-				}
-			}
-			return policy;
-		}
-		static policyDetails findPolicyID(int policyNum, ArrayList<policyDetails> allPolicy)
+   
+   static policyDetails findPolicyID(int policyNum, ArrayList<policyDetails> policyList)
 		{ 	 
-			for(policyDetails a : allPolicy)  //for each user in list
+			for(policyDetails a : policyList)  //for each user in list
 			{	
 				if(a.getPolicyID() == policyNum)
 				{				
 						return a; //return immediately if found
 				}
 			}
-			return null;  //not found.
-				
+			return null;  //not found.				
 		}
+
+
+	   // static policyDetails findPolicyID(int policyNum, ArrayList<policyDetails> allPolicy)
+// 		{ 	 
+// 			for(policyDetails a : allPolicy)  //for each user in list
+// 			{	
+// 				if(a.getPolicyID() == policyNum)
+// 				{				
+// 						return a; //return immediately if found
+// 				}
+// 			}
+// 			return null;  //not found.
+// 				
+// 		}
 		
 	
-	//delete customer from list 
-	static User2 deleteUser(String policyNum)
-	{
-		if(!allUsers.isEmpty())
-		{
-			User2 newUser = findPolicy(policyNum, allUsers);	
-			if(newUser != null);
-			{
-				allUsers.remove(newUser);	
-				return newUser;
-			}			
-		}
-		return null;
-	}
-	
+		
 	//TODO:
 	/*public void updateCustDetails(String policyNum)
 	{
@@ -140,20 +172,7 @@ public class List2 {
 		}
 	}*/
 	
-	//Check if policy exists in the user list
-	public static User2 viewPolicy(String policyNum)
-	{
-		if(!allUsers.isEmpty())
-		{
-			User2 newUser = findPolicy(policyNum, allUsers);
-			if(newUser != null )
-			{
-				return newUser;
-			}
-		}
-		return null;
-	}
-	
+		
 	//displays customer details
 	public static void displayUser(User2 aUser)
 	{
@@ -164,5 +183,6 @@ public class List2 {
 		return allPolicy.get(allPolicy.size()-1);
 		
 	}
+
 }
 

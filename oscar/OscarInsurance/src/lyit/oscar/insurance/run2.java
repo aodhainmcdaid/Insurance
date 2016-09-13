@@ -20,16 +20,16 @@ import java.util.*;
 
 public class run2 {
 
+
 	//private User aUser;
-	private Admin2 anAdmin;
-	User2 user;
+  	//User2 user;
 
 
 	String AdminPass= "pass";
 	String UserPass= "pass2";
 
 	//Scanner keyIn;
-	 static SqlStatements sqlEngine = new SqlStatements(); 
+	 //static SqlStatements sqlEngine = new SqlStatements(); 
 	
 	
 
@@ -39,7 +39,7 @@ public class run2 {
 		Scanner keyIn = new Scanner(System.in);
 		Connection conn = null;
 		System.out.println("Starting Connection to DB");
-		conn = MYSQLconnect.getConnection();
+		//conn = MYSQLconnect.getConnection();
 		
 		System.out.println("Created Connection \n");
 		int option;
@@ -62,8 +62,11 @@ public class run2 {
 					User2 client = createUser();
 					User2 client2 = List2.addUser(client);
 					policyDetails policy1 = List2.getPolicyDetails();
-					//List2.addPolicy();
-					System.out.print("Added!");
+               System.out.println(" Your policy Number is: " +policy1.getPolicyID());
+					System.out.println("Added!");
+               System.out.println(policy1);
+               System.out.println(client2);
+               
 					//sqlEngine.insertCust(client2);          
 					//sqlEngine.insertPol(polNo);
 					
@@ -75,6 +78,7 @@ public class run2 {
 					if(client3 != null)
 					{
 						//User2 client4 = sqlEngine.selectCust(client3);
+                  System.out.println("start printing");
 						System.out.println(client3);
 						
 					}
@@ -104,8 +108,8 @@ public class run2 {
 					User2 client2 = List2.viewPolicy(numb3);
 					if(client2 != null)
 					{
-						User2 client3 = sqlEngine.selectCust(client2);
-						List2.displayUser(client3);
+						//User2 client3 = sqlEngine.selectCust(client2);
+						//List2.displayUser(client3);
 					}
 					else
 					{
@@ -121,7 +125,7 @@ public class run2 {
 					User2 client4 = List2.deleteUser(numb4);
 					if(client4 != null)
 					{
-						sqlEngine.delCust(client4);
+						//sqlEngine.delCust(client4);
 					}
 					else
 					{
@@ -145,7 +149,7 @@ public class run2 {
 			default:	
 				System.out.println("Invalid option entered " );			
 			}//end switch 1
-		//keyIn.close();
+		
 		}while(option !=0);
 			
 	}		
@@ -319,7 +323,7 @@ public class run2 {
 			}
 
 			//Choose policy Type 
-			int polType = 2;
+			//int polType = 2;
 			
 			
 			//Create the user based on the given information
@@ -345,7 +349,9 @@ public class run2 {
 			policyDetails aNewPolicy= new policyDetails(type, start, end, pay_type);
 			
 			aNewPolicy.generatePolicyID();
+        
 			List2.addPolicy(aNewPolicy);
+         aNewUser.setPolicyNo(Integer.toString(aNewPolicy.getPolicyID()));
 			
 
 			
@@ -354,17 +360,16 @@ public class run2 {
 			return aNewUser;
 		}
 
-	//TODO:Returns policy type
-	public static int policy()
-	{
-		return 0;
-	}
-	//TODO
-	public static String policyId()
-	{
-		return "555555";
-	}
-
-
+	// //TODO:Returns policy type
+// 	public static int policy()
+// 	{
+// 		return 0;
+// 	}
+// 	//TODO
+// 	public static String policyId()
+// 	{
+// 		return "555555";
+// 	}
+// 
 
 }

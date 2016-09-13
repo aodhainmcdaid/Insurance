@@ -1,3 +1,9 @@
+/**
+ * @author Melissa and Daniela
+ * 	Aodhain McDaid
+ *  Fred Manu
+ */
+
 package lyit.oscar.insurance;
 
 
@@ -83,14 +89,19 @@ public class policyDetails {
 	}
 	public void generatePolicyID()
 	{
-		policyID=counter;
+		policyID = counter;
 		counter++;
 		
 	}
-	
-	
-	
-	
-	
-	
+   public String toString()
+   {
+      String str = "";
+      str = str + getPolicyID()+ "\n";
+      str = str + getPolicyType()+"\n";
+      str = str + getPolicyStart()+"\n";
+	   str = str + getEnd()+"\n";
+	   str = str + getPaymentType();
+      
+      return str;
+   }	
 }

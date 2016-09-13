@@ -24,7 +24,7 @@ public class User2 {
 	private String policyNo;
 	private int policyType;
 	private int personID;
-	private static int counter=0;
+	private static int counter=1;
 
 
 	/**
@@ -171,4 +171,5 @@ public class User2 {
 	{
 		return personID;
 	}
+
 }
