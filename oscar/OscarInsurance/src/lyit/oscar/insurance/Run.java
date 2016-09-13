@@ -194,7 +194,7 @@ public class Run {
 					System.out.println("Invalid Response.");
 				}
 			}catch(InputMismatchException e){
-				keyIn.next();
+				keyIn.nextLine();
 				System.out.println("Bad Response");
 			}
 		}
@@ -205,7 +205,7 @@ public class Run {
 		String response = "";
 		while(true){
 			System.out.println(aString);
-			response = keyIn.next();
+			response = keyIn.nextLine();
 			if(!response.isEmpty()){
 				break;
 			}
