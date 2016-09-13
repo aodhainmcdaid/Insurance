@@ -18,7 +18,7 @@ import java.time.LocalDate;
 public class SqlStatements
 {
 	//insert customer into the database
-	public void insertCust(User2 aUser)
+	public void insertCust(User aUser)
 	{
 		PreparedStatement statement = null;
 		Connection connection = null;
@@ -68,7 +68,7 @@ public class SqlStatements
 	}
 
 	//delete customer from database
-	public void delCust(User2 aUser)
+	public void delCust(User aUser)
 	{
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -144,12 +144,12 @@ public class SqlStatements
 	}*/
 
 	//view a specific customer details
-	public User2 selectCust(User2 aUser)
+	public User selectCust(User aUser)
 	{
 		ResultSet selectResult = null;
 		Connection connection = null;
 		PreparedStatement statement = null;
-		User2 newUser = new User2();
+		User newUser = new User();
 
 
 		try {

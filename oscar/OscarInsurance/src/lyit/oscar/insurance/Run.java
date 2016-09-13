@@ -53,8 +53,8 @@ public class Run {
 				switch(numb)
 				{
 				case 1:                                           
-					User2 client = createUser();
-					User2 client2 = List.addUser(client);
+					User client = createUser();
+					User client2 = List.addUser(client);
 					PolicyDetails policy1 = List.getPolicyDetails();
                System.out.println(" Your policy Number is: " +policy1.getPolicyID());
 					System.out.println("Added!");
@@ -68,7 +68,7 @@ public class Run {
 
 				case 2: 
 					String numb2 = getStrResponse("\nEnter your Policy Number: ");
-					User2 client3 = List.viewPolicy(numb2);
+					User client3 = List.viewPolicy(numb2);
 					if(client3 != null)
 					{
 						//User2 client4 = sqlEngine.selectCust(client3);
@@ -99,7 +99,7 @@ public class Run {
 				case 1:
 
 					String numb3 = getStrResponse("\nEnter Client Policy Number: ");
-					User2 client2 = List.viewPolicy(numb3);
+					User client2 = List.viewPolicy(numb3);
 					if(client2 != null)
 					{
 						//User2 client3 = sqlEngine.selectCust(client2);
@@ -116,7 +116,7 @@ public class Run {
 
 				case 3: 	
 					String numb4 = getStrResponse("\nEnter Client Policy Number: ");
-					User2 client4 = List.deleteUser(numb4);
+					User client4 = List.deleteUser(numb4);
 					if(client4 != null)
 					{
 						//sqlEngine.delCust(client4);
@@ -264,7 +264,7 @@ public class Run {
 			}
 		}*/
 
-		public static User2 createUser(){
+		public static User createUser(){
 			//Create the title name, and user's full name
 			
 			String title = getStrResponse("Please input your title: ");
@@ -322,7 +322,7 @@ public class Run {
 			
 			//Create the user based on the given information
 			//String polNum  = policyId();
-			User2 aNewUser = new User2(title, first, last, birthday, phone, a_gender,email, address);
+			User aNewUser = new User(title, first, last, birthday, phone, a_gender,email, address);
 			
 			// TODOwill have to work on the policy number. run 1 has nice codes. this is dummy
 			//Pricing priceUser = new Pricing(aNewUser); 

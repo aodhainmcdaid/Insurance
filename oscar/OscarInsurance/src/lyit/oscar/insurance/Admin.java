@@ -1,6 +1,6 @@
 package lyit.oscar.insurance;
 
-public class Admin extends User2 {
+public class Admin extends User {
 
 	
 	/*private String firstName;

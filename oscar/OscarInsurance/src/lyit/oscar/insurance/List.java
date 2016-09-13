@@ -11,13 +11,13 @@ import java.util.ArrayList;
 public class List {
 	//Variables
 	
-	static ArrayList <User2> allUsers = new ArrayList<>();
+	static ArrayList <User> allUsers = new ArrayList<>();
 	static ArrayList <PolicyDetails> allPolicy = new ArrayList<>();
 	//User2 user;
 	//private String policyNo;
 
 
-	static public ArrayList<User2> getUserList(Boolean priv)
+	static public ArrayList<User> getUserList(Boolean priv)
 	{
 		if(priv)
 		{
@@ -31,7 +31,7 @@ public class List {
 	
 		
 	// Design method to add user to list
-	static public User2 addUser(User2 aUser)
+	static public User addUser(User aUser)
 	{
 		
 		if(allUsers.isEmpty())
@@ -40,7 +40,7 @@ public class List {
 		}
 		else
 		{
-			User2 newUser = find(aUser, allUsers); 
+			User newUser = find(aUser, allUsers); 
 			if(newUser == null)
 			{
 				allUsers.add(newUser);
@@ -51,11 +51,11 @@ public class List {
 	}
    
    //delete customer from list 
-	static User2 deleteUser(String policyNum)
+	static User deleteUser(String policyNum)
 	{
 		if(!allUsers.isEmpty())
 		{
-			User2 newUser = findPolicy(policyNum, allUsers);	
+			User newUser = findPolicy(policyNum, allUsers);	
 			if(newUser != null);
 			{
 				allUsers.remove(newUser);	
@@ -87,11 +87,11 @@ public class List {
 		}
 
 	//Check if policy exists in the user list
-	public static User2 viewPolicy(String policyNum)
+	public static User viewPolicy(String policyNum)
 	{
 		if(!allUsers.isEmpty())
 		{
-			User2 newUser = findPolicy(policyNum, allUsers);
+			User newUser = findPolicy(policyNum, allUsers);
 			if(newUser != null )
 			{
 				return newUser;
@@ -101,9 +101,9 @@ public class List {
 	}
 
    //return a customer in the list through policy number
-	static User2 findPolicy(String policyNum, ArrayList<User2> userList)
+	static User findPolicy(String policyNum, ArrayList<User> userList)
 	{ 	 
-		for(User2 a : userList)  //for each user in list
+		for(User a : userList)  //for each user in list
 		{	
 			//if(a.getPolicyNo().equalsIgnoreCase(policyNum))
          if(a.getPolicyNo().equalsIgnoreCase(policyNum))
@@ -116,9 +116,9 @@ public class List {
 	}
 	
 	//return customer in the list through customer object
-	static User2 find(User2 aUser, ArrayList<User2> userList)
+	static User find(User aUser, ArrayList<User> userList)
 	{ 	 
-		for(User2 a : userList)  //for each user in list
+		for(User a : userList)  //for each user in list
 		{	
 			if(a.equals(aUser))  //if I find it
 			{					 
@@ -174,7 +174,7 @@ public class List {
 	
 		
 	//displays customer details
-	public static void displayUser(User2 aUser)
+	public static void displayUser(User aUser)
 	{
 		System.out.println(aUser);
 	}	

@@ -11,7 +11,7 @@ import java.time.Period;
 import java.util.Date;
 import java.util.Random;
 
-public class User2 {
+public class User {
 	//Variables 
 	private String title;
 	private String firstName;
@@ -37,7 +37,7 @@ public class User2 {
 	 * @param pass	The user's chosen password
 	 * @param ad		The user's administration privilege - should always be false unless creating a new user from the Admin Class
 	 */
-	public User2( String t, String first, String last, LocalDate bday,String pho, String gen, String em, String add){
+	public User( String t, String first, String last, LocalDate bday,String pho, String gen, String em, String add){
 		this.title = t;
 		this.firstName = first;
 		this.lastName = last;
@@ -49,13 +49,13 @@ public class User2 {
 		
 	}
 
-	public User2(String first, String last)
+	public User(String first, String last)
 	{
 		this.firstName = first;
 		this.lastName = last;
 	}
 	//default constructor
-	public User2(){}
+	public User(){}
 
 	public void setTitle(String titleIn){
 		this.title = titleIn;	
@@ -133,7 +133,7 @@ public class User2 {
 		this.policyType = policyType;
 	}
 
-	public boolean equals(User2 anotherUser)
+	public boolean equals(User anotherUser)
 	{
 		return( policyNo == anotherUser.policyNo
 				&&  firstName == anotherUser.firstName

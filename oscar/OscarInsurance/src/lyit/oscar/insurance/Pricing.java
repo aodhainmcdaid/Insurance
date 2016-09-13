@@ -7,13 +7,13 @@ import java.util.Random;
  */
 public class Pricing {
 	//Variables
-	private User2 currentUser2;
+	private User currentUser2;
 	
 	/**
 	 * The constructor for the pricing class
 	 * @param aUser2	this is the current User2
 	 */
-	Pricing(User2 aUser2){
+	Pricing(User aUser2){
 		this.currentUser2 = aUser2;
 		generatePrice();
 	}
@@ -42,12 +42,12 @@ public class Pricing {
 		while(true){
 			Random rnd = new Random();
 			polNum = rnd.nextInt(899999999) + 100000000; //makes sure the policy number is between 100000000 and 999999999
-			User2[] User2List = List.getUser2List(true);
+			User[] User2List = List.getUser2List(true);
 			Boolean generated = true;
 			
 			//Check to make sure that policy numbers are not duplicated
-			for(User2 User2:User2List){
-				int toCheck = User2.getPolicyNo();
+			for(User User:User2List){
+				int toCheck = User.getPolicyNo();
 				if(toCheck == polNum){
 					generated = false; //If it is a duplicate, it's not properly generated
 				}
