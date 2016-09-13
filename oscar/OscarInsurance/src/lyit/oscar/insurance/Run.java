@@ -18,25 +18,19 @@ import java.util.*;
 //Run2 created to account for problems in original
 
 
-public class run2 {
-
-
-	//private User aUser;
-  	//User2 user;
-
-
+public class Run {
+	
 	String AdminPass= "pass";
 	String UserPass= "pass2";
 
-	//Scanner keyIn;
-	 //static SqlStatements sqlEngine = new SqlStatements(); 
+	static Scanner keyIn;
 	
 	
 
-	public static void run3() 
+	public static void run() 
 	{
 		
-		Scanner keyIn = new Scanner(System.in);
+		keyIn = new Scanner(System.in);
 		Connection conn = null;
 		System.out.println("Starting Connection to DB");
 		//conn = MYSQLconnect.getConnection();
