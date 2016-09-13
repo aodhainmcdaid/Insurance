@@ -17,18 +17,16 @@ import java.util.*;
 
 public class Run {
 	
-	String AdminPass= "pass";
-	String UserPass= "pass2";
-
+	static String AdminPass= "pass";
+	static String UserPass= "pass2";
+	static Connection conn;
 	static Scanner keyIn;
-	
 	
 
 	public static void run() 
 	{
 		
 		keyIn = new Scanner(System.in);
-		Connection conn = null;
 		System.out.println("Starting Connection to DB");
 		conn = MYSQLconnect.getConnection();
 		
