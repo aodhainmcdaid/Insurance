@@ -1,4 +1,3 @@
-// Daniela Pricope using http://theopentutorials.com/post/uncategorized/jdbc-mysql-connection-tutorial/
 package lyit.oscar.insurance;
 
 import java.sql.Connection;
@@ -7,6 +6,8 @@ import java.sql.SQLException;
 
 
 /**
+ * This class created the connection to the SQL Database
+ * http://theopentutorials.com/post/uncategorized/jdbc-mysql-connection-tutorial/
  * @author Daniela
  */
 public class MYSQLconnect {
@@ -38,13 +39,13 @@ public class MYSQLconnect {
         Connection connection = null;
         try {
             //Step 3: Establish Java MySQL connection
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            //System.out.println("Connected to Database.");
-            
-        } catch (SQLException e) {
-            System.out.println("ERROR: Unable to Connect to Database.");
-        }
-        return connection;
+	        connection = DriverManager.getConnection(URL, USER, PASSWORD);
+	        //System.out.println("Connected to Database.");
+	        
+	    } catch (SQLException e) {
+	        System.out.println("ERROR: Unable to Connect to Database.");
+	    }
+	    return connection;
     }   
      
     /**
