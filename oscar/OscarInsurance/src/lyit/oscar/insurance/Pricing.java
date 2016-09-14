@@ -47,13 +47,10 @@ public class Pricing {
 	 * @return the generated policy number as an int
 	 */
 	public int generatePolicyNum(){
-		int polNum = 0;
+		Random rnd = new Random();
+		int polNum = rnd.nextInt(899999) + 100000; 	
 		
-		//Generates the policy number
-			Random rnd = new Random();
-			polNum = rnd.nextInt(899999) + 100000; 	
-			
-			return polNum;			
+		return polNum;			
 	}
 	
 }
