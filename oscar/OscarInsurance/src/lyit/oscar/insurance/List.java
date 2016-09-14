@@ -1,36 +1,34 @@
 package lyit.oscar.insurance;
 
-/**
- * @author Melissa and Daniela
- * 	Aodhain McDaid
- *  Fred Manu
- */
-	
 import java.util.ArrayList;
 
+/**
+ * This class is used to handle all of the lists needed by the program.
+ * @author Melissa, Daniela, Aodhain, and Fred
+ */
 public class List {
 	//Variables
-	
 	static ArrayList <User> allUsers = new ArrayList<>();
 	static ArrayList <PolicyDetails> allPolicy = new ArrayList<>();
-	//User2 user;
-	//private String policyNo;
 
-
-	static public ArrayList<User> getUserList(Boolean priv)
-	{
-		if(priv)
-		{
+	/**
+	 * This method returns the user array list if the requester has the correct privilege
+	 * @param priv	true if allowed to access the list, false if not
+	 * @return		either a blank list or a filled list depending on the privilege
+	 */
+	static public ArrayList<User> getUserList(Boolean priv){
+		if(priv){
 			return allUsers;
-		}
-		else
-		{
+		}else{
 			return null;
 		}
 	}
 	
-		
-	// Design method to add user to list
+	/**
+	 * This method adds a user to the list
+	 * @param aUser	the user to be added
+	 * @return		the user that has been added
+	 */
 	static public User addUser(User aUser)
 	{
 		
@@ -50,7 +48,11 @@ public class List {
 		return aUser;
 	}
    
-   //delete customer from list 
+   	/**
+   	 * Deletes a user from the list
+   	 * @param policyNum	The policy number of the user to be deleted
+   	 * @return			The user that is deleted
+   	 */
 	static User deleteUser(String policyNum)
 	{
 		if(!allUsers.isEmpty())
@@ -64,29 +66,36 @@ public class List {
 		}
 		return null;
 	}
-
    
-   // Design method to add user to list
-		static public PolicyDetails addPolicy(PolicyDetails policy)
+ 	/**
+ 	 * Adds a policy to the policy list
+ 	 * @param policy	the policy to be added
+ 	 * @return			the added policy
+ 	 */
+	static public PolicyDetails addPolicy(PolicyDetails policy)
+	{
+		
+		if(allPolicy.isEmpty())
 		{
-			
-			if(allPolicy.isEmpty())
-			{
-				allPolicy.add(policy);
-			}
-			else
-			{
-				PolicyDetails newPolicy = findPolicyID(policy.getPolicyID(), allPolicy); 
-				if(newPolicy == null)
-				{
-					allPolicy.add(newPolicy);
-					return newPolicy;
-				}
-			}
-			return policy;
+			allPolicy.add(policy);
 		}
+		else
+		{
+			PolicyDetails newPolicy = findPolicyID(policy.getPolicyID(), allPolicy); 
+			if(newPolicy == null)
+			{
+				allPolicy.add(newPolicy);
+				return newPolicy;
+			}
+		}
+		return policy;
+	}
 
-	//Check if policy exists in the user list
+	/**
+	 * Gets the user details based on the policy number entered
+	 * @param policyNum	The policy number to be viewed
+	 * @return			The user who owns the policy
+	 */
 	public static User viewPolicy(String policyNum)
 	{
 		if(!allUsers.isEmpty())
@@ -100,22 +109,31 @@ public class List {
 		return null;
 	}
 
-   //return a customer in the list through policy number
+	/**
+	 * Finds the user from the policy number
+	 * @param policyNum	The number to search
+	 * @param userList	The list of users
+	 * @return			The user that belongs to the policy number
+	 */
 	static User findPolicy(String policyNum, ArrayList<User> userList)
 	{ 	 
 		for(User a : userList)  //for each user in list
 		{	
-			//if(a.getPolicyNo().equalsIgnoreCase(policyNum))
          if(a.getPolicyNo().equalsIgnoreCase(policyNum))
 			{				
-					return a; //return immediately if found
+				return a; //return immediately if found
 			}
 		}
 		return null;  //not found.
 			
 	}
 	
-	//return customer in the list through customer object
+	/**
+	 * Finds the user object in the User list
+	 * @param aUser		the user to be found
+	 * @param userList	the list to look through
+	 * @return			null if not found, the user if they are found.
+	 */
 	static User find(User aUser, ArrayList<User> userList)
 	{ 	 
 		for(User a : userList)  //for each user in list
@@ -128,61 +146,40 @@ public class List {
 		return null;  //not found.
 	}
    
-   static PolicyDetails findPolicyID(int policyNum, ArrayList<PolicyDetails> policyList)
-		{ 	 
-			for(PolicyDetails a : policyList)  //for each user in list
-			{	
-				if(a.getPolicyID() == policyNum)
-				{				
-						return a; //return immediately if found
-				}
-			}
-			return null;  //not found.				
-		}
-
-
-	   // static policyDetails findPolicyID(int policyNum, ArrayList<policyDetails> allPolicy)
-// 		{ 	 
-// 			for(policyDetails a : allPolicy)  //for each user in list
-// 			{	
-// 				if(a.getPolicyID() == policyNum)
-// 				{				
-// 						return a; //return immediately if found
-// 				}
-// 			}
-// 			return null;  //not found.
-// 				
-// 		}
-		
-	
-		
-	//TODO:
-	/*public void updateCustDetails(String policyNum)
-	{
-		if(!allUsers.isEmpty())
-		{
-			User2 newUser = findPolicy(policyNum, allUsers);
-			return newUser;
-				break;            
+	/**
+	 * 
+	 * @param policyNum
+	 * @param policyList
+	 * @return
+	 */
+	static PolicyDetails findPolicyID(int policyNum, ArrayList<PolicyDetails> policyList)
+	{ 	 
+		for(PolicyDetails a : policyList)  //for each user in list
+		{	
+			if(a.getPolicyID() == policyNum)
+			{				
+					return a; //return immediately if found
 			}
 		}
-		else
-		{
-			return null;
-		}
-	}*/
-	
+		return null;  //not found.				
+	}
 		
-	//displays customer details
+	/**
+	 * Displays the user's details
+	 * @param aUser	The user's details to be displayed
+	 */
 	public static void displayUser(User aUser)
 	{
 		System.out.println(aUser);
 	}	
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public static PolicyDetails getPolicyDetails()
 	{
 		return allPolicy.get(allPolicy.size()-1);
-		
 	}
-
 }
 
