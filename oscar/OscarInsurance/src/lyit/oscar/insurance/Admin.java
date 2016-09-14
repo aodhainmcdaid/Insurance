@@ -1,7 +1,7 @@
 package lyit.oscar.insurance;
 
 /**
- * Authors: Melissa, Aodhain, Fred,  and Daniela
+ * @author: Melissa, Aodhain, Fred,  and Daniela
  */
 public class Admin extends User {
 	/*private String firstName;
