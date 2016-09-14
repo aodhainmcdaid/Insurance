@@ -22,13 +22,17 @@ public class SqlStatements
 	{
 			PreparedStatement statement = null;
 			Connection connection = null;
+			ResultSet rs = null;
 
 
 			try {
 				connection = MYSQLconnect.getConnection();
-				String addCust = "INSERT INTO person_table (idperson_table,title,First_name,Surname,Date_of_birth,"+
-						"telephone,gender,email,address) VALUES (?,?,?,?,?,?,?,?,?)";
-				statement = connection.prepareStatement(addCust);
+				String addCust = "INSERT INTO person_table (title,First_name,Surname,Date_of_birth,"+
+						"telephone,gender,email,address) VALUES (?,?,?,?,?,?,?,?)";
+				
+				/*String addCust = "INSERT INTO person_table (title,First_name,Surname,Date_of_birth,"+
+						"telephone,gender,email,address) VALUES (?,?,?,?,?,?,?,?) SET @idperson_table = LAST_INSERT_ID()";*/
+				statement = connection.prepareStatement(addCust, PreparedStatement.RETURN_GENERATED_KEYS);
 				statement.setString(1, aUser.getTitle());
 				statement.setString(2, aUser.getFname());
 				statement.setString(3, aUser.getlname());
@@ -42,13 +46,17 @@ public class SqlStatements
 				if (insertRows > 0) {
 					System.out.println("\nPolicy accepted");
 				}
-				}catch (Exception e) {
-					e.printStackTrace();
-			}
-			try {
-				connection = MYSQLconnect.getConnection();
+				
+				rs = statement.getGeneratedKeys();
+				if(rs != null && rs.next());
+				{
+					aUser.setPersonID(rs.getInt(1));
+					System.out.println("Your ID is : "+rs.getInt(1));
+				}
+				
+				//connection = MYSQLconnect.getConnection();
 				String addPolicy = "INSERT INTO policy_table (idpolicy_table,cover_start,cover_finish,payment_type,"+
-						"cost,idperson_table = LAST_INSERT_ID()) VALUES (?,?,?,?,?)";
+						"cost,idperson_table) VALUES (?,?,?,?,?,LAST_INSERT_ID())";
 
 				statement = connection.prepareStatement(addPolicy);
 				statement.setInt(1, aPolicy.getPolicyID());
@@ -56,12 +64,15 @@ public class SqlStatements
 				statement.setDate(3, Date.valueOf(aPolicy.getPolicyEnd()));
 				statement.setString(4, aPolicy.getPaymentType());
 				statement.setDouble(5, aPolicy.getPolicyCost());
-
-
+				
 				int insertRows1 = statement.executeUpdate();
 				if (insertRows1 > 0) {
 					System.out.println("\nPolicy accepted and Activated!\nPolicy number is: "+aPolicy.getPolicyID());
 				}
+			/*} catch (ClassNotFoundException e) {
+
+	            e.printStackTrace();
+			}*/
 			}catch (Exception e) {
 				e.printStackTrace();
 		} finally {
@@ -79,8 +90,15 @@ public class SqlStatements
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+			}	
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+						e.printStackTrace();
+				}			
 			}
-		}
+		}			
 	}
 
 
@@ -93,7 +111,7 @@ public class SqlStatements
 
 		try {
 			connection = MYSQLconnect.getConnection();
-			String addCust = ("DELETE FROM person_table WHERE idperson_table IN (SELECT idpolicy_table FROM policy_table WHERE idpolicy_table= ?");
+			String addCust = ("DELETE FROM person_table WHERE idperson_table IN (SELECT idperson_table FROM policy_table WHERE idpolicy_table= ?");
 			statement = connection.prepareStatement(addCust);
 			statement.setInt(1, Integer.parseInt(aUser.getPolicyNo()));
 			int deleteRows = statement.executeUpdate();
@@ -139,6 +157,7 @@ public class SqlStatements
 				{
 					System.out.println("DELETE FROM person WHERE policyNo = ?");
 				} 
+			
 			} catch (Exception e) {
 				e.printStackTrace();
 			} finally {
