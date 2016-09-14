@@ -98,7 +98,7 @@ public class SqlStatements
 	/**
 	 * Deletes a customer based on the policy number given
 	 * @param policyNo	The policy number of the person to be deleted
-	 * @return			
+	 * @return			Some int value
 	 */
 	public int delCust(String policyNo)
 	{

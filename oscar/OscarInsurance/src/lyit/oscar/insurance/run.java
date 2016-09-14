@@ -11,6 +11,7 @@ import java.util.*;
 
 /**
  * @author Melissa, Daniela, Aodhain, and Fred
+ * The central hub for running the program
  */
 public class run {
 

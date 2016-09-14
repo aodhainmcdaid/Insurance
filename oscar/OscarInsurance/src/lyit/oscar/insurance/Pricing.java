@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
+ * Generates price based on age and policy numbers
  * @author Melissa, Daniela, Aodhain, and Fred
  */
 public class Pricing {

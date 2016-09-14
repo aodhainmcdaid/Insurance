@@ -19,11 +19,11 @@ public class PolicyDetails {
 	private double cost;
 	
 	/**
-	 * 
-	 * @param policyType
-	 * @param policyStart
-	 * @param policyEnd
-	 * @param paymentType
+	 * Constructor for the Policy
+	 * @param policyType	The policy type to be created
+	 * @param policyStart	The start date of the policy
+	 * @param policyEnd		The end date of the policy
+	 * @param paymentType	The form of payment the user has chosen
 	 */
 	public PolicyDetails(String policyType, LocalDate policyStart, LocalDate policyEnd, String paymentType)
 	{
