@@ -4,18 +4,16 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * @author Melissa Melaugh
+ * @author Melissa, Daniela, Aodhain, and Fred
  */
 public class Pricing {
 	
 	//Variables
 	private double price;
-    
     double INITIALPRICE= 700.00;
 	
 	/**
 	 * The constructor for the pricing class
-	 * @param aUser2	this is the current User2
 	 */
 	public Pricing()
 	{
@@ -23,8 +21,9 @@ public class Pricing {
 	}
 	
 	/**
-	 * This method looks at the current User2 and generates a price based on their data.
-	 * If they wish to purchase, it generates a policy number and updates the User2's information.
+	 * This method looks at the user's age and returns the price based on the age input
+	 * @param userAge	The age of the policy holder
+	 * @return 			The price of the policy as a Double
 	 */
 	public double  generatePrice(int userAge)
 	{						
@@ -44,8 +43,8 @@ public class Pricing {
 	}
 	
 	/**
-	 * This method generates a unique policy number for the User2 between 100000000 and 999999999. 
-	 * It updates the User2's profile with their unique policy number.
+	 * This method generates a unique policy number for the User2 between 100000 and 999999.
+	 * @return the generated policy number as an int
 	 */
 	public int generatePolicyNum(){
 		int polNum = 0;
