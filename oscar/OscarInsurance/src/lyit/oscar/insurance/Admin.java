@@ -1,14 +1,15 @@
 package lyit.oscar.insurance;
 
 /**
+ * This class is used to construct the administrator. 
  * @author: Melissa, Aodhain, Fred,  and Daniela
  */
 public class Admin extends User {
-	/*private String firstName;
-	private String lastName;*/
 	
 	/**
-	 * This 
+	 * The constructor for the administrator
+	 * @param first	the admin's first name
+	 * @param last	the admin's last name
 	 */
 	public Admin(String first, String last) 
 	{
