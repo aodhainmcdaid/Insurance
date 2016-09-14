@@ -1,5 +1,14 @@
 package lyit.oscar.insurance;
 
+/**
+ * @authors
+ *  Melissa and Daniela
+ * 	Aodhain McDaid
+ *  Fred Manu
+ */
+
+//package lyit.oscar.insurance;
+
 import java.util.InputMismatchException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -8,134 +17,146 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-/**
- * @author Melissa, Daniela, Aodhain, and Fred
- */
+
+
 public class run {
+
+	//private User aUser;
+	//User2 user;
+
+
+	String AdminPass= "pass";
+	String UserPass= "pass2";
+
 	static Scanner keyIn;
+	
 	static SqlStatements sqlEngine = new SqlStatements(); 
 
-	/**
-	 * This method is used to run the main program. 
-	 */
+
+
 	public static void run3() 
 	{
-		//Initiate important variables
+
 		keyIn = new Scanner(System.in);
 		Connection conn = null;
 		System.out.println("Starting Connection to DB");
 		conn = MYSQLconnect.getConnection();
+
 		System.out.println("Created Connection \n");
-		
 		int option;
 		do{
 			System.out.println("\n1. Customer Menu\n2. Admin Menu\n0. Exit");
+			System.out.println("\nEnter Option: ");
 
-			option = getNumResponse("Enter Option:", 0,2); 
+			option = keyIn.nextInt(); 
+
 
 			switch(option)
 			{
-				case 1: //open account
-					displayClientMenu();	
-					int numb = getNumResponse("\nEnter option",0,2);                    
-	
-					switch(numb)
+			case 1: //open account
+				displayClientMenu();	
+				int numb = getNumResponse("\nEnter option",0,2);                    
+
+				switch(numb)
+				{
+				case 1:                                           
+					User client = createUser();
+					User client2 = List.addUser(client);
+					PolicyDetails policy1 = List.getPolicyDetails();
+					System.out.println(" Your policy Number is: " +policy1.getPolicyID());
+					System.out.println("Added!");
+					
+					System.out.println(policy1);
+					
+
+					sqlEngine.insertCust(client2, policy1);  
+					System.out.println(client2);
+
+					break;
+
+				case 2: 
+					String numb2 = getStrResponse("\nEnter your Policy Number: ");
+					User client3 = sqlEngine.selectCust(numb2);
+					if(client3 != null)
+					{	
+						System.out.println("start printing");
+						System.out.println(client3);
+					}
+					else
 					{
-						case 1:                                           
-							User client = createUser();
-							User client2 = List.addUser(client);
-							PolicyDetails policy1 = List.getPolicyDetails();
-							System.out.println(" Your policy Number is: " +policy1.getPolicyID());
-							System.out.println("Added!");
-							System.out.println(policy1);
-							System.out.println(client2);
-		
-							sqlEngine.insertCust(client2, policy1);          
-		
-							break;
-		
-						case 2: 
-							String numb2 = getStrResponse("\nEnter your Policy Number: ");
-							User client3 = List.viewPolicy(numb2);
-							if(client3 != null)
-							{
-								User client4 = sqlEngine.selectCust(client3);
-								System.out.println("start printing");
-								System.out.println(client4);
-		
-							}
-							else
-							{
-								System.out.println("Policy Number invalid..Can't view your details");
-							}
-							break;
-		
-						case 0: 	
-							System.out.println("Thank you..");
-							break;  
-		
-						default:	System.out.println("Invalid Customer option entered " );            
-					} //end switch 2                                        						
-					break;		
-	
-				case 2: //close account
-					displayAdminMenu();
-					int numb2 = getNumResponse("\nEnter option",0,3);                    
-	
-					switch(numb2)
-					{
-						case 1:
-		
-							String numb3 = getStrResponse("\nEnter Client Policy Number: ");
-							User client2 = List.viewPolicy(numb3);
-							if(client2 != null)
-							{
-								User client3 = sqlEngine.selectCust(client2);
-								List.displayUser(client3);
-							}
-							else
-							{
-								System.out.println("Policy Number invalid..Can't view client details");
-							}                                 
-							break;
-		
-						case 2: 
-							break;
-		
-						case 3: 	
-							String numb4 = getStrResponse("\nEnter Client Policy Number: ");
-							User client4 = List.deleteUser(numb4);
-							if(client4 != null)
-							{
-								sqlEngine.delCust(client4);
-							}
-							else
-							{
-								System.out.println("Policy Number is invalid. Cannot delete client");
-							}                              
-							break;
-		
-						case 0: 	
-							System.out.println("Thank you Adminstrator..");
-							break;  
-		
-						default:	
-							System.out.println("Invalid  Admin option entered" );            
-					} //end switch 3                                        						
-					break;		              						
-	
+						System.out.println("Policy Number invalid..Can't view your details");
+					}
+					break;
+
 				case 0: 	
-					System.out.println("Good bye.");
+					System.out.println("Thank you..");
 					break;  
-	
+
+				default:	System.out.println("Invalid Customer option entered " );            
+				} //end switch 2                                        						
+				break;		
+
+			case 2: //close account
+				displayAdminMenu();
+				int numb2 = getNumResponse("\nEnter option",0,3);                    
+
+				switch(numb2)
+				{
+				case 1:
+
+					String numb3 = getStrResponse("\nEnter Client Policy Number: ");
+					User client2 = sqlEngine.selectCust(numb3);
+					if(client2 != null)
+					{	
+						System.out.println("start printing");
+						System.out.println(client2);
+					}
+					else
+					{
+						System.out.println("Customer Policy Number invalid..Can't view details");
+					}                                 
+					break;
+
+				case 2: 
+					break;
+
+				case 3: 	
+					String numb4 = getStrResponse("\nEnter Client Policy Number: ");
+					int client4 = sqlEngine.delCust(numb4);
+					if(client4 > 0)
+					{
+					System.out.println("\nCustomer with policy number: " +numb4+ " deleted");
+					}
+					
+					else
+					{
+						System.out.println("\nPolicy Number is invalid..Can't delete client");
+					}                              
+					break;
+
+				case 0: 	
+					System.out.println("Thank you Adminstrator..");
+					break;  
+
 				default:	
-					System.out.println("Invalid option entered " );			
+					System.out.println("Invalid  Admin option entered" );            
+				} //end switch 3                                        						
+				break;		              						
+
+			case 0: 	
+				System.out.println("Goodday..");
+				break;  
+
+			default:	
+				System.out.println("Invalid option entered " );			
 			}//end switch 1
+
 		}while(option !=0);
+
 	}		
-	
 	/**
-	 * This method prints out the options for the customer
+	 * 
+	 * @return display login for customer
 	 */
 	public static void displayClientMenu()
 	{
@@ -147,7 +168,8 @@ public class run {
 	}
 
 	/**
-	 * This method prints out the options for the admin
+	 * 
+	 * @return display login for Admin
 	 */
 	public static void displayAdminMenu()
 	{			
@@ -160,13 +182,6 @@ public class run {
 		System.out.println("0.\tExit\n\n");   
 	}
 
-	/**
-	 * This method prompts the user for an integer response and returns the value.
-	 * @param aString	The prompt
-	 * @param min		The minimum value the returned integer can be
-	 * @param max		The maximum value the returned integer can be
-	 * @return			The user's integer choice
-	 */
 	static public int getNumResponse(String aString, int min, int max){
 		//variables
 		int response = min - 3; //make sure that the default response cannot be marked as valid
@@ -190,19 +205,11 @@ public class run {
 		return response;
 	}
 
-	/**
-	 * This method prompts the user for a response, and returns the String they responded with
-	 * @param aString	The prompt
-	 * @return			The String value that the user entered
-	 */
 	static public String getStrResponse(String aString){
 		String response = "";
 		while(true){
-			//Print out the prompt
 			System.out.println(aString);
-			//Get user input
 			response = keyIn.nextLine();
-			//Check that user input isn't empty
 			if(!response.isEmpty()){
 				break;
 			}
@@ -211,11 +218,11 @@ public class run {
 	}
 	
 	/**
-	 * This method creates a new user based on information that the user provides
-	 * then updates the current user to the newly created one from this method.
-	 * After the user is created, it prompts the new user to create a policy based on 
-	 * the information they provided.
+	 * Creates a new user based on information that the user provides, and then updates the current user to the newly
+	 * created one from this method.
 	 */
+	
+
 	public static User createUser(){
 		User aNewUser = new User(null, null, null, null, null, null, null, null);
 		//Create the title name, and user's full name
@@ -227,7 +234,7 @@ public class run {
 			String email = getStrResponse("Please input your email: ");
 			String address = getStrResponse("Please input your address: ");
 			
-			//create a dummy date to be updated
+			//String policyNo= "1";
 			LocalDate birthday = LocalDate.now();
 	
 			//Create the User's Birthday
@@ -256,8 +263,7 @@ public class run {
 					break;
 				}
 			}
-			
-			//Get gender from user
+	
 			int gender = getNumResponse("Please chose you gender: \n\t1: Male \n\t2:Female", 1, 2);
 			String a_gender = "";
 			if(gender == 1){
@@ -276,36 +282,36 @@ public class run {
 		}
 		
 		
-		aNewUser.setPersonID();
+		//aNewUser.setPersonID();
 		int age = aNewUser.getAge();
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
-		//Set information for the policy
 		System.out.print("Select Policy Type: ");
-		String type = getStrResponse("\n\t1)Partial Coverage \n\t2)Full Coverage: ");
+		String type = getStrResponse("1)Partial Coverage 2)Full Coverage: ");
 		String startdate=getStrResponse("Enter Policy start Date in this format (yyyy-MM-dd): ");
 		LocalDate start =LocalDate.parse(startdate,dtf);
-		String enddate=getStrResponse("Enter Policy end Date in this format (yyyy-MM-dd): ");
+		String enddate=getStrResponse("Enter Policy end Date in this format (yyyy-MM-dd):: ");
 		LocalDate end =LocalDate.parse(enddate,dtf);
 		String pay_type = getStrResponse("Enter payment type: ");
 
-		//Create policy based on entered information
+
 		PolicyDetails aNewPolicy= new PolicyDetails(type, start, end, pay_type);
 		
-		//Create policy price based on age
 		Pricing price = new Pricing();
 		int policy = price.generatePolicyNum();
 		aNewPolicy.setPolicyID(policy);
+		System.out.println("age: "+aNewUser.getAge());
 		double policyPrice = price.generatePrice(age);
 		aNewPolicy.setPolicyCost(policyPrice);
 				
-		//Add the user and their policy to the list
 		List.addPolicy(aNewPolicy);
 		aNewUser.setPolicyNo(Integer.toString(aNewPolicy.getPolicyID()));
+
 		List.addUser(aNewUser);
-		System.out.print("User and policy created.");
-		
+		System.out.print("aaa");
 		return aNewUser;
 	}
+
+
 }

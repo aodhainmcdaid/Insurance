@@ -22,9 +22,10 @@ public class User {
 	private String email;
 	private String address;
 	private String policyNo;
-	private int policyType;
+	//private String policyType;
 	private int personID;
-	private static int counter=2;
+	private double insuranceCost;
+	
 
 
 	/**
@@ -64,20 +65,20 @@ public class User {
 		return title;			
 	}
 	public void setFname(String fnameIn){
-		this.title = fnameIn;	
+		this.firstName = fnameIn;	
 	}
 	public String getFname(){
 		return firstName;	
 	}
 	public void setlname(String lnameIn){
-		this.title = lnameIn;	
+		this.lastName = lnameIn;	
 	}
 	public String getlname(){
 		return lastName;	
 	}
-	public void DOB(LocalDate DOBIn){
-		this.dob = DOBIn;	
-	}
+	//public void DOB(LocalDate DOBIn){
+	//	this.dob = DOBIn;	
+	//}
 	public LocalDate getDOB(){
 		return dob;
 	}
@@ -126,12 +127,12 @@ public class User {
 
 	}
 
-	public int getPolicyType() {
+	/*public String getPolicyType() {
 		return policyType;
 	}
-	public void setPolicyType(int policyType) {
+	public void setPolicyType(String policyType) {
 		this.policyType = policyType;
-	}
+	}*/
 
 	public boolean equals(User anotherUser)
 	{
@@ -157,19 +158,28 @@ public class User {
 		str = str + "\ndate of birth: "+(getDOB() != null?getDOB():"");
 		str = str + "\ngender: "+(getGender().isEmpty()?"":getGender());
 		str = str + "\nemail: "+(getEmail().isEmpty()?"":getEmail());
-		str = str + "\npolicy type: "+(getPolicyType() > 0? getPolicyType():"");
 		str = str + "\npolicy number: "+(getPolicyNo().isEmpty()?"":getPolicyNo());
+		str = str + "\ncost: "+(getInsuranceCost() < 0?"":getInsuranceCost());
 
 		return str;
 	}
-	public void setPersonID()
+	public void setPersonID(int personIDIn)
 	{
-		personID=counter;
-		counter++;
+		personID = personIDIn;
 	}
 	public int getPersonID()
 	{
 		return personID;
+	}
+
+	public double getInsuranceCost()
+	{
+		return insuranceCost;
+	}
+
+	public void setInsuranceCost(double insuranceCostIn) 
+	{
+		this.insuranceCost = insuranceCostIn;
 	}
 
 }

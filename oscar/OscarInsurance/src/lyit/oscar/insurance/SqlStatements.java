@@ -103,21 +103,23 @@ public class SqlStatements
 
 
 	//delete customer from databas
-	public void delCust(User aUser)
+	public int delCust(String policyNo)
 	{
 		Connection connection = null;
 		PreparedStatement statement = null;
+		int deleteRows = 0;
+		
 
 
 		try {
 			connection = MYSQLconnect.getConnection();
-			String addCust = ("DELETE FROM person_table WHERE idperson_table IN (SELECT idperson_table FROM policy_table WHERE idpolicy_table= ?");
+			String addCust = "DELETE FROM person_table WHERE idperson_table IN (SELECT idperson_table FROM policy_table WHERE idpolicy_table= ?)";
 			statement = connection.prepareStatement(addCust);
-			statement.setInt(1, Integer.parseInt(aUser.getPolicyNo()));
-			int deleteRows = statement.executeUpdate();
+			statement.setInt(1, Integer.parseInt(policyNo));
+			deleteRows = statement.executeUpdate();
 			if(deleteRows > 0)
 			{
-				System.out.println("DELETED: "+aUser.getFname() +""+aUser.getlname()+"  policy number "+aUser.getPolicyNo());
+				System.out.println("DELETED:   policy number: "+ policyNo);
 			} 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -136,8 +138,9 @@ public class SqlStatements
 					e.printStackTrace();
 				}
 			}
-		}
-
+			
+		}		
+		return deleteRows;
 	}
 
 	//update customer details
@@ -180,7 +183,8 @@ public class SqlStatements
 		}*/
 
 	//view a specific customer detail
-	public User selectCust(User aUser)
+	//public User selectCust(User aUser)
+	public User selectCust(String policyNo)
 	{
 		ResultSet selectResult = null;
 		Connection connection = null;
@@ -190,18 +194,19 @@ public class SqlStatements
 
 		try {
 			connection = MYSQLconnect.getConnection();
-			String addCust = ("SELECT *,policy_table.idpolicy  FROM person_table, policy_table WHERE policy_table.idperson_table = ?");
+			String addCust = ("SELECT * FROM person_table, policy_table WHERE policy_table.idpolicy_table = ?");
 			statement = connection.prepareStatement(addCust);
-			statement.setInt(1, aUser.getPersonID());
+			//statement.setInt(1, Integer.parseInt(aUser.getPolicyNo()));
+			statement.setInt(1, Integer.parseInt(policyNo));
 			selectResult = statement.executeQuery();
 			while (selectResult.next()) {
 
-				//newUser.setPersonID(selectResult.getInt("idperson_table"));
+				newUser.setPersonID(selectResult.getInt("idperson_table"));
 				newUser.setTitle(selectResult.getString("title"));
 				newUser.setFname(selectResult.getString("first_Name"));
 				newUser.setlname(selectResult.getString("surname"));
 				newUser.setDOB((selectResult.getDate("date_of_birth")).toLocalDate());
-				newUser.setPhone(selectResult.getString("phone"));
+				newUser.setPhone(selectResult.getString("telephone"));
 				newUser.setGender(selectResult.getString("gender"));
 				newUser.setEmail(selectResult.getString("email"));
 				newUser.setAddress(selectResult.getString("address"));

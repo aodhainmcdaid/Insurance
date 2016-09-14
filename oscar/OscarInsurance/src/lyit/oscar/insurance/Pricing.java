@@ -7,36 +7,37 @@ import java.util.Random;
  * @author Melissa Melaugh
  */
 public class Pricing {
+	
 	//Variables
+	private double price;
+    
+    double INITIALPRICE= 700.00;
 	
 	/**
 	 * The constructor for the pricing class
 	 * @param aUser2	this is the current User2
 	 */
-	public Pricing(){
-	
+	public Pricing()
+	{
+		price = INITIALPRICE;
 	}
 	
 	/**
 	 * This method looks at the current User2 and generates a price based on their data.
 	 * If they wish to purchase, it generates a policy number and updates the User2's information.
 	 */
-	public double  generatePrice(int userAge){
-		double price=0.0;
-	    double DISCOUNT1=0.1;
-	    double DISCOUNT2=0.15;
-		
-		double INITIALPRICE= 1000.00;
+	public double  generatePrice(int userAge)
+	{						
 		if (userAge >=60)
-			price=INITIALPRICE;
-		else if (userAge>=50)
-			price=price - price* DISCOUNT1;
-		else if (userAge>=40)
-			price=price-price*DISCOUNT2;
-		else if (userAge>=30)
-			price=price-price*2*DISCOUNT1;
-		else if(userAge>=18)
-		    price=price-price *2*DISCOUNT2;
+			price=1000;
+		if (userAge>=50)
+			price=800;
+		if (userAge>=40)
+			price=700;
+		if (userAge>=30)
+			price=600;
+		if(userAge>=18)
+		    price=500;
 		else System.out.print("under 18 not able to be a policy holder ");
 		
 		return price;
@@ -53,8 +54,7 @@ public class Pricing {
 			Random rnd = new Random();
 			polNum = rnd.nextInt(899999) + 100000; 	
 			
-			return polNum;
-			
+			return polNum;			
 	}
 	
 }
